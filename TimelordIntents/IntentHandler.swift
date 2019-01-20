@@ -5,6 +5,25 @@ class IntentHandler: INExtension,
 {
     // MARK: INAddTasksIntentHandling
     
+    func resolveTemporalEventTrigger(
+        for intent: INAddTasksIntent,
+        with completion: @escaping (INTemporalEventTriggerResolutionResult) -> Void)
+    {
+        completion({
+            guard
+                let trigger = intent.temporalEventTrigger,
+                let startDateComponents = trigger
+                    .dateComponentsRange
+                    .startDateComponents
+                else { return .needsValue() }
+            return .success(
+                with: INTemporalEventTrigger(
+                    dateComponentsRange: INDateComponentsRange(
+                        start: startDateComponents,
+                        end: nil)))
+        }())
+    }
+    
     func handle(
         intent: INAddTasksIntent,
         completion: @escaping (INAddTasksIntentResponse) -> Void)
