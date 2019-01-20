@@ -10,7 +10,6 @@
 		EA0EE32D21F518CE0030A35C /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EE32C21F518CE0030A35C /* IntentHandler.swift */; };
 		EA0EE33621F518CE0030A35C /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0EE33521F518CE0030A35C /* IntentsUI.framework */; };
 		EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EE33821F518CE0030A35C /* IntentViewController.swift */; };
-		EA0EE33C21F518CE0030A35C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0EE33A21F518CE0030A35C /* MainInterface.storyboard */; };
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
@@ -60,7 +59,6 @@
 		EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimelordIntentsUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0EE33521F518CE0030A35C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		EA0EE33821F518CE0030A35C /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
-		EA0EE33B21F518CE0030A35C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		EA0EE33D21F518CE0030A35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				EA0EE33821F518CE0030A35C /* IntentViewController.swift */,
-				EA0EE33A21F518CE0030A35C /* MainInterface.storyboard */,
 				EA0EE33D21F518CE0030A35C /* Info.plist */,
 			);
 			path = TimelordIntentsUI;
@@ -274,7 +271,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA0EE33C21F518CE0030A35C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,14 +328,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA0EE33A21F518CE0030A35C /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA0EE33B21F518CE0030A35C /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
 		EA88EBE621F50F7C00D045C6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

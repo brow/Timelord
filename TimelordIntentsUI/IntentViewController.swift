@@ -1,6 +1,6 @@
 import IntentsUI
 
-class IntentViewController: UIViewController, INUIHostedViewControlling {
+class IntentViewController: UITableViewController, INUIHostedViewControlling {
     
     // MARK: INUIHostedViewControlling
     
