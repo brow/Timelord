@@ -10,7 +10,6 @@ class IntentHandler: INExtension,
         completion: @escaping (INAddTasksIntentResponse) -> Void)
     {
         print(intent)
-//        let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
         let response = INAddTasksIntentResponse(
             code: .success,
             userActivity: nil)

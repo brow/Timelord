@@ -58,6 +58,7 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
+      intentQueryString = "In Timelord remind me in 30 minutes to take yams out"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
@@ -67,21 +68,32 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.notificationcenterui">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA88EBDE21F50F7C00D045C6"
-            BuildableName = "Timelord.app"
-            BlueprintName = "Timelord"
+            BlueprintIdentifier = "EA0EE33221F518CE0030A35C"
+            BuildableName = "TimelordIntentsUI.appex"
+            BlueprintName = "TimelordIntentsUI"
             ReferencedContainer = "container:Timelord.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EA0EE33221F518CE0030A35C"
+            BuildableName = "TimelordIntentsUI.appex"
+            BlueprintName = "TimelordIntentsUI"
+            ReferencedContainer = "container:Timelord.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
+      intentQueryString = "In Timelord remind me in 30 minutes to take yams out"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
