@@ -36,23 +36,15 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellIdentifier,
-            for: indexPath)
+        let cellIdentifier = "Cell"
+        let cell = tableView
+            .dequeueReusableCell(
+                withIdentifier: cellIdentifier)
+            ?? UITableViewCell(
+                style: .value1,
+                reuseIdentifier: cellIdentifier)
         cell.textLabel?.text = "Take eggplant out"
         cell.detailTextLabel?.text = "30:00"
         return cell
     }
-    
-    // MARK: UIViewController
-    
-    override func loadView() {
-        super.loadView()
-        
-        tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: cellIdentifier)
-    }
 }
-
-private let cellIdentifier = "Cell"
