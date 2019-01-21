@@ -23,7 +23,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             // we must return false in the empty parameters case.
             !parameters.isEmpty,
             parameters,
-            self.extensionContext!.hostedViewMaximumAllowedSize)
+            tableView.contentSize)
     }
     
     // MARK: UITableViewDataSource
@@ -37,7 +37,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
         numberOfRowsInSection section: Int)
         -> Int
     {
-        return 2
+        return 1
     }
     
     override func tableView(
