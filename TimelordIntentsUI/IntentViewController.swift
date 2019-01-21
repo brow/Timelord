@@ -53,7 +53,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
                 style: .value1,
                 reuseIdentifier: cellIdentifier)
         cell.textLabel?.text = "Take eggplant out"
-        cell.detailTextLabel?.text = "30:00"
+        cell.detailTextLabel?.text = "20:00"
         return cell
     }
 }

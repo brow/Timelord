@@ -28,20 +28,42 @@ class IntentHandler: INExtension,
         intent: INAddTasksIntent,
         completion: @escaping (INAddTasksIntentResponse) -> Void)
     {
-        let response = INAddTasksIntentResponse(
-            code: .success,
-            userActivity: nil)
-        response.addedTasks = [
-            INTask(
-                title: INSpeakableString(spokenPhrase: "Fake task"),
-                status: .notCompleted,
-                taskType: .notCompletable,
-                spatialEventTrigger: nil,
-                temporalEventTrigger: nil,
-                createdDateComponents: nil,
-                modifiedDateComponents: nil,
-                identifier: "faketask")
-            ]
-        completion(response)
+        completion({
+            guard
+                let startDateComponents = intent
+                    .temporalEventTrigger?
+                    .dateComponentsRange
+                    .startDateComponents,
+                let taskTitles = intent.taskTitles
+                else {
+                    return INAddTasksIntentResponse(
+                        code: .failure,
+                        userActivity: nil)
+                }
+            let temporalEventTrigger = INTemporalEventTrigger(
+                dateComponentsRange: INDateComponentsRange(
+                    start: startDateComponents,
+                    end: nil))
+            let response = INAddTasksIntentResponse(
+                code: .success,
+                userActivity: nil)
+            response.addedTasks = taskTitles.map { title in
+                INTask(
+                    title: title,
+                    status: .notCompleted,
+                    taskType: .notCompletable,
+                    spatialEventTrigger: nil,
+                    temporalEventTrigger: temporalEventTrigger,
+                    createdDateComponents: nil,
+                    modifiedDateComponents: nil,
+                    identifier: nil)
+            }
+            return response
+        }())
     }
+}
+
+struct Task {
+    let name: String
+    let date: Date
 }
