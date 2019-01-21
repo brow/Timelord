@@ -28,7 +28,6 @@ class IntentHandler: INExtension,
         intent: INAddTasksIntent,
         completion: @escaping (INAddTasksIntentResponse) -> Void)
     {
-        print(intent)
         let response = INAddTasksIntentResponse(
             code: .success,
             userActivity: nil)
