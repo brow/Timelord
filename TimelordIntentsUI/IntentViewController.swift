@@ -1,4 +1,5 @@
 import IntentsUI
+import ReactiveSwift
 
 class IntentViewController: UITableViewController, INUIHostedViewControlling {
     
@@ -16,6 +17,14 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             .compactMap { $0 as? INTask }
             .compactMap(Reminder.init(task:))
         tableView.reloadData()
+        
+        // FIXME
+        SignalProducer
+            .timer(
+                interval: .milliseconds(50),
+                on: QueueScheduler.main,
+                leeway: .milliseconds(10))
+            .startWithValues { print($0) }
         
         let configuredParameters = parameters
         let desiredSize = tableView.contentSize

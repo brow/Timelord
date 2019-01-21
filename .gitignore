@@ -19,7 +19,7 @@ DerivedData
 
 # Carthage
 # 
-Carthage/Checkouts
+Carthage
 *.bcsymbolmap
 
 # Fastlane

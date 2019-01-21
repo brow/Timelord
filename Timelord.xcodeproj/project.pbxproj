@@ -17,6 +17,8 @@
 		EA88EBE821F50F7C00D045C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE621F50F7C00D045C6 /* Main.storyboard */; };
 		EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE921F50F7D00D045C6 /* Assets.xcassets */; };
 		EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */; };
+		EAD5B36B21F6526700C1F107 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36921F6526700C1F107 /* Result.framework */; };
+		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		EA88EBE921F50F7D00D045C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA88EBEC21F50F7D00D045C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA88EBEE21F50F7D00D045C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD5B36921F6526700C1F107 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0EE33621F518CE0030A35C /* IntentsUI.framework in Frameworks */,
+				EAD5B36B21F6526700C1F107 /* Result.framework in Frameworks */,
+				EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +113,8 @@
 		EA0EE33421F518CE0030A35C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */,
+				EAD5B36921F6526700C1F107 /* Result.framework */,
 				EA0EE33521F518CE0030A35C /* IntentsUI.framework */,
 			);
 			name = Frameworks;
@@ -183,6 +191,7 @@
 				EA0EE32F21F518CE0030A35C /* Sources */,
 				EA0EE33021F518CE0030A35C /* Frameworks */,
 				EA0EE33121F518CE0030A35C /* Resources */,
+				EAD5B36E21F652A400C1F107 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -286,6 +295,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EAD5B36E21F652A400C1F107 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA0EE32621F518CE0030A35C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -352,6 +385,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TimelordIntentsUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +408,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TimelordIntentsUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
