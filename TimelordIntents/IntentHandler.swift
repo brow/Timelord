@@ -57,7 +57,7 @@ class IntentHandler: INExtension,
     }
 }
 
-extension INAddTasksIntent {
+private extension INAddTasksIntent {
     var startDateComponents: DateComponents? {
         return temporalEventTrigger?
             .dateComponentsRange
@@ -65,16 +65,11 @@ extension INAddTasksIntent {
     }
 }
 
-extension INTemporalEventTrigger {
+private extension INTemporalEventTrigger {
     convenience init(startDateComponents: DateComponents) {
         self.init(
             dateComponentsRange: INDateComponentsRange(
                 start: startDateComponents,
                 end: nil))
     }
-}
-
-struct Task {
-    let name: String
-    let date: Date
 }
