@@ -11,10 +11,7 @@ class IntentHandler: INExtension,
     {
         completion({
             guard
-                let trigger = intent.temporalEventTrigger,
-                let startDateComponents = trigger
-                    .dateComponentsRange
-                    .startDateComponents
+                let startDateComponents = intent.startDateComponents
                 else { return .needsValue() }
             return .success(
                 with: INTemporalEventTrigger(
@@ -30,10 +27,7 @@ class IntentHandler: INExtension,
     {
         completion({
             guard
-                let startDateComponents = intent
-                    .temporalEventTrigger?
-                    .dateComponentsRange
-                    .startDateComponents,
+                let startDateComponents = intent.startDateComponents,
                 let taskTitles = intent.taskTitles
                 else {
                     return INAddTasksIntentResponse(
@@ -60,6 +54,14 @@ class IntentHandler: INExtension,
             }
             return response
         }())
+    }
+}
+
+extension INAddTasksIntent {
+    var startDateComponents: DateComponents? {
+        return temporalEventTrigger?
+            .dateComponentsRange
+            .startDateComponents
     }
 }
 
