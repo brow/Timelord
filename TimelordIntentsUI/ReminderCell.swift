@@ -31,6 +31,12 @@ final class ReminderCell: UITableViewCell {
             .combineLatest(
                 currentDate,
                 model.map { $0.date }.skipRepeats())
+            .map { currentDate, reminderDate in
+                // Don't allow the interval to fall below zero.
+                (currentDate, currentDate < reminderDate
+                    ? reminderDate
+                    : currentDate)
+            }
             .map(timeRemainingFormatter.string(from:to:))
             .map { $0 ?? "" }
             .skipRepeats()
