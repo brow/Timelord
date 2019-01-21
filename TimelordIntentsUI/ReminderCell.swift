@@ -10,22 +10,30 @@ final class ReminderCell: UITableViewCell {
             style: .value1,
             reuseIdentifier: reuseIdentifier)
         
+        guard
+            let textLabel = textLabel,
+            let detailTextLabel = detailTextLabel
+            else { return }
+        
+        detailTextLabel.font = .monospacedDigitSystemFont(
+            ofSize: 17,
+            weight: .regular)
+        
         // Bindings
         
         let model = self.model.producer.skipNil()
         
-        if let textLabel = textLabel {
-            textLabel.reactive.text <~ model.map { $0.name }.skipRepeats()
-        }
-        if let detailTextLabel = detailTextLabel {
-            detailTextLabel.reactive.text <~ SignalProducer
-                .combineLatest(
-                    currentDate,
-                    model.map { $0.date }.skipRepeats())
-                .map(timeRemainingFormatter.string(from:to:))
-                .map { $0 ?? "" }
-
-        }
+        textLabel.reactive.text <~ model
+            .map { $0.name }
+            .skipRepeats()
+        
+        detailTextLabel.reactive.text <~ SignalProducer
+            .combineLatest(
+                currentDate,
+                model.map { $0.date }.skipRepeats())
+            .map(timeRemainingFormatter.string(from:to:))
+            .map { $0 ?? "" }
+            .skipRepeats()
     }
     
     required init?(coder aDecoder: NSCoder) {
