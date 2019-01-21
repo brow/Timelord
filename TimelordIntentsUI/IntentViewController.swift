@@ -18,14 +18,6 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             .compactMap(Reminder.init(task:))
         tableView.reloadData()
         
-        // FIXME
-        SignalProducer
-            .timer(
-                interval: .milliseconds(50),
-                on: QueueScheduler.main,
-                leeway: .milliseconds(10))
-            .startWithValues { print($0) }
-        
         let configuredParameters = parameters
         let desiredSize = tableView.contentSize
         completion(
@@ -53,17 +45,22 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let reminder = reminders[indexPath.row]
-        let cellIdentifier = "Cell"
-        let cell = tableView
-            .dequeueReusableCell(
-                withIdentifier: cellIdentifier)
-            ?? UITableViewCell(
-                style: .value1,
-                reuseIdentifier: cellIdentifier)
-        cell.textLabel?.text = reminder.name
-        cell.detailTextLabel?.text = "20:00"
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: cellIdentifier,
+            for: indexPath)
+            as! ReminderCell
+        cell.model.value = reminders[indexPath.row]
         return cell
+    }
+    
+    // MARK: UIViewController
+    
+    override func loadView() {
+        super.loadView()
+        
+        tableView.register(
+            ReminderCell.self,
+            forCellReuseIdentifier: cellIdentifier)
     }
     
     // MARK: private
@@ -71,20 +68,4 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
     private var reminders: [Reminder] = []
 }
 
-private struct Reminder {
-    let name: String
-    let date: Date
-    
-    init?(task: INTask) {
-        guard
-            let startDateComponents = task
-                .temporalEventTrigger?
-                .dateComponentsRange
-                .startDateComponents,
-            let startDate = Calendar.current.date(
-                from: startDateComponents)
-            else { return nil }
-        name = task.title.spokenPhrase
-        date = startDate
-    }
-}
+private let cellIdentifier = "Reminder"
