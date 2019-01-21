@@ -12,7 +12,16 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
         completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void)
     {
         completion(
-            true,
+            // As the docs say, "SiriKit calls this method method once with zero
+            // parameters… If there are still parameters to be displayed,
+            // SiriKit calls this method one or more additional times with a set
+            // of INParameter objects."
+            //
+            // I don't understand why SiriKit does that, but if we return true
+            // multiple times, the resulting UI contains multiple
+            // IntentViewControllers stacked vertically. We only want one, so
+            // we must return false in the empty parameters case.
+            !parameters.isEmpty,
             parameters,
             self.extensionContext!.hostedViewMaximumAllowedSize)
     }
