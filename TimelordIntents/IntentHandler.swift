@@ -13,11 +13,13 @@ class IntentHandler: INExtension,
             guard
                 let startDateComponents = intent.startDateComponents
                 else { return .needsValue() }
-            return .success(
-                with: INTemporalEventTrigger(
-                    dateComponentsRange: INDateComponentsRange(
-                        start: startDateComponents,
-                        end: nil)))
+            let temporalEventTrigger = INTemporalEventTrigger(
+                startDateComponents: startDateComponents)
+            return temporalEventTrigger == intent.temporalEventTrigger
+                ? .success(
+                    with: temporalEventTrigger)
+                : .confirmationRequired(
+                    with: temporalEventTrigger)
         }())
     }
     
@@ -35,9 +37,7 @@ class IntentHandler: INExtension,
                         userActivity: nil)
                 }
             let temporalEventTrigger = INTemporalEventTrigger(
-                dateComponentsRange: INDateComponentsRange(
-                    start: startDateComponents,
-                    end: nil))
+                startDateComponents: startDateComponents)
             let response = INAddTasksIntentResponse(
                 code: .success,
                 userActivity: nil)
@@ -62,6 +62,15 @@ extension INAddTasksIntent {
         return temporalEventTrigger?
             .dateComponentsRange
             .startDateComponents
+    }
+}
+
+extension INTemporalEventTrigger {
+    convenience init(startDateComponents: DateComponents) {
+        self.init(
+            dateComponentsRange: INDateComponentsRange(
+                start: startDateComponents,
+                end: nil))
     }
 }
 
