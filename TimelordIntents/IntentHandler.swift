@@ -68,7 +68,6 @@ class IntentHandler: INExtension,
             let response = INSearchForNotebookItemsIntentResponse(
                 code: .success,
                 userActivity: nil)
-            response.sortType = .byDate
             response.tasks = reminders.map { $0.task }
             return response
         }())
