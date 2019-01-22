@@ -17,6 +17,27 @@ public struct Reminder {
         name = task.title.spokenPhrase
         date = startDate
     }
+    
+    public var task: INTask {
+        return INTask(
+            title: INSpeakableString(spokenPhrase: name),
+            status: .notCompleted,
+            taskType: .notCompletable,
+            spatialEventTrigger: nil,
+            temporalEventTrigger: INTemporalEventTrigger(
+                startDateComponents: Calendar.current.dateComponents(
+                    in: .current,
+                    from: date)),
+            createdDateComponents: nil,
+            modifiedDateComponents: nil,
+            identifier: nil)
+    }
+    
+    // FIXME
+    public init() {
+        name = "Example timer"
+        date = Date().addingTimeInterval(600)
+    }
 }
 
 private func startDate(components: DateComponents) -> Date? {

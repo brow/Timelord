@@ -1,4 +1,5 @@
 import Intents
+import Core
 
 class IntentHandler: INExtension,
     INAddTasksIntentHandling,
@@ -68,35 +69,10 @@ class IntentHandler: INExtension,
                 code: .success,
                 userActivity: nil)
             response.sortType = .byDate
-            response.tasks = [
-                INTask(
-                    title: INSpeakableString(spokenPhrase: "Fake task"),
-                    status: .notCompleted,
-                    taskType: .notCompletable,
-                    spatialEventTrigger: nil,
-                    temporalEventTrigger: nil,
-                    createdDateComponents: nil,
-                    modifiedDateComponents: nil,
-                    identifier: nil)
-            ]
+            response.tasks = reminders.map { $0.task }
             return response
         }())
     }
 }
 
-private extension INAddTasksIntent {
-    var startDateComponents: DateComponents? {
-        return temporalEventTrigger?
-            .dateComponentsRange
-            .startDateComponents
-    }
-}
-
-private extension INTemporalEventTrigger {
-    convenience init(startDateComponents: DateComponents) {
-        self.init(
-            dateComponentsRange: INDateComponentsRange(
-                start: startDateComponents,
-                end: nil))
-    }
-}
+private let reminders = [Reminder()]

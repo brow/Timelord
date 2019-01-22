@@ -27,6 +27,7 @@
 		EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B37121F65EA200C1F107 /* Reminder.swift */; };
 		EAFEAA2E21F6985100B487FC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; };
 		EAFEAA2F21F6985600B487FC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; };
+		EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		EAFEAA2021F697BC00B487FC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFEAA2221F697BC00B487FC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EAFEAA2321F697BC00B487FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
+				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
 				EAFEAA2221F697BC00B487FC /* Core.h */,
 				EAFEAA2321F697BC00B487FC /* Info.plist */,
 			);
@@ -452,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */,
+				EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
