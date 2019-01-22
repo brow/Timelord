@@ -1,7 +1,8 @@
 import Intents
 
 class IntentHandler: INExtension,
-    INAddTasksIntentHandling
+    INAddTasksIntentHandling,
+    INSearchForNotebookItemsIntentHandling
 {
     // MARK: INAddTasksIntentHandling
     
@@ -52,6 +53,32 @@ class IntentHandler: INExtension,
                     modifiedDateComponents: nil,
                     identifier: nil)
             }
+            return response
+        }())
+    }
+    
+    // MARK: INSearchForNotebookItemsIntentHandling
+    
+    func handle(
+        intent: INSearchForNotebookItemsIntent,
+        completion: @escaping (INSearchForNotebookItemsIntentResponse) -> Void)
+    {
+        completion({
+            let response = INSearchForNotebookItemsIntentResponse(
+                code: .success,
+                userActivity: nil)
+            response.sortType = .byDate
+            response.tasks = [
+                INTask(
+                    title: INSpeakableString(spokenPhrase: "Fake task"),
+                    status: .notCompleted,
+                    taskType: .notCompletable,
+                    spatialEventTrigger: nil,
+                    temporalEventTrigger: nil,
+                    createdDateComponents: nil,
+                    modifiedDateComponents: nil,
+                    identifier: nil)
+            ]
             return response
         }())
     }

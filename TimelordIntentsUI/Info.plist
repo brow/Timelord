@@ -28,6 +28,7 @@
 		<dict>
 			<key>IntentsSupported</key>
 			<array>
+				<string>INSearchForNotebookItemsIntent</string>
 				<string>INAddTasksIntent</string>
 			</array>
 		</dict>
