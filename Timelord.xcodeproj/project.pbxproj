@@ -216,10 +216,10 @@
 		EAFEAA2121F697BC00B487FC /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
-				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
 				EAFEAA2221F697BC00B487FC /* Core.h */,
 				EAFEAA2321F697BC00B487FC /* Info.plist */,
+				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
+				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
