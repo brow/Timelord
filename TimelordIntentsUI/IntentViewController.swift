@@ -18,11 +18,11 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             .compactMap { $0 as? INTask }
             .compactMap(Reminder.init(task:))
         tableView.reloadData()
-        
+
         let configuredParameters = parameters
         let desiredSize = tableView.contentSize
         completion(
-            !reminders.isEmpty,
+            true,
             configuredParameters,
             desiredSize)
     }
