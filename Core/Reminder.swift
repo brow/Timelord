@@ -1,11 +1,11 @@
 import Foundation
 import Intents
 
-struct Reminder {
-    let name: String
-    let date: Date
+public struct Reminder {
+    public let name: String
+    public let date: Date
     
-    init?(task: INTask) {
+    public init?(task: INTask) {
         guard
             let startDateComponents = task
                 .temporalEventTrigger?

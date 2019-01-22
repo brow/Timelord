@@ -1,6 +1,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import Core
 
 final class ReminderCell: UITableViewCell {
     let model = MutableProperty<Reminder?>(nil)

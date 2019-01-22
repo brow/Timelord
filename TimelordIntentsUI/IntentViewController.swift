@@ -1,5 +1,6 @@
 import IntentsUI
 import ReactiveSwift
+import Core
 
 class IntentViewController: UITableViewController, INUIHostedViewControlling {
     
