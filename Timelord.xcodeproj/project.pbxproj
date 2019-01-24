@@ -13,12 +13,14 @@
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
+		EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */; };
+		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
+		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
 		EA88EBE821F50F7C00D045C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE621F50F7C00D045C6 /* Main.storyboard */; };
 		EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE921F50F7D00D045C6 /* Assets.xcassets */; };
 		EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */; };
-		EAD5B36B21F6526700C1F107 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36921F6526700C1F107 /* Result.framework */; };
 		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
 		EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */; };
@@ -100,6 +102,7 @@
 		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutablePropertyPersistence.swift; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFEAA2F21F6985600B487FC /* Core.framework in Frameworks */,
+				EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +137,6 @@
 			files = (
 				EAFEAA2E21F6985100B487FC /* Core.framework in Frameworks */,
 				EA0EE33621F518CE0030A35C /* IntentsUI.framework in Frameworks */,
-				EAD5B36B21F6526700C1F107 /* Result.framework in Frameworks */,
 				EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */,
 				EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */,
 			);
@@ -158,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +252,7 @@
 				EAFEAA2221F697BC00B487FC /* Core.h */,
 				EAFEAA2321F697BC00B487FC /* Info.plist */,
 				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
+				EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */,
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
 			);
 			path = Core;
@@ -291,7 +296,6 @@
 				EA0EE32F21F518CE0030A35C /* Sources */,
 				EA0EE33021F518CE0030A35C /* Frameworks */,
 				EA0EE33121F518CE0030A35C /* Resources */,
-				EAD5B36E21F652A400C1F107 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -329,6 +333,7 @@
 				EA88EBDD21F50F7C00D045C6 /* Resources */,
 				EA0EE34A21F518CE0030A35C /* Embed App Extensions */,
 				EAFEAA2C21F697BC00B487FC /* Embed Frameworks */,
+				EA4F288F21FA5CC80009BCEB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,7 +462,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EAD5B36E21F652A400C1F107 /* ShellScript */ = {
+		EA4F288F21FA5CC80009BCEB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -522,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */,
+				EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */,
 				EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +628,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TimelordIntents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,6 +651,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TimelordIntents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -861,6 +875,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -890,6 +908,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

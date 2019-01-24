@@ -1,5 +1,6 @@
 import Intents
 import Core
+import ReactiveSwift
 
 class IntentHandler: INExtension,
     INAddTasksIntentHandling,
@@ -55,7 +56,7 @@ class IntentHandler: INExtension,
                     identifier: nil)
             }
             response.addedTasks = tasks
-            reminders.append(
+            reminders.value.append(
                 contentsOf: tasks.compactMap(Reminder.init))
             return response
         }())
@@ -71,10 +72,13 @@ class IntentHandler: INExtension,
             let response = INSearchForNotebookItemsIntentResponse(
                 code: .success,
                 userActivity: nil)
-            response.tasks = reminders.map { $0.task }
+            response.tasks = reminders.value.map { $0.task }
             return response
         }())
     }
 }
 
-private var reminders: [Reminder] = []
+private var reminders = MutableProperty<[Reminder]>(
+    userDefaults: .standard,
+    key: "Reminders",
+    defaultValue: [])

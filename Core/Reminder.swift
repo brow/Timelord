@@ -1,7 +1,7 @@
 import Foundation
 import Intents
 
-public struct Reminder {
+public struct Reminder: Codable {
     public let name: String
     public let date: Date
     
