@@ -12,6 +12,7 @@
 		EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EE33821F518CE0030A35C /* IntentViewController.swift */; };
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
 		EA88EBE821F50F7C00D045C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE621F50F7C00D045C6 /* Main.storyboard */; };
@@ -44,6 +45,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = EA0EE32921F518CE0030A35C;
 			remoteInfo = Intents;
+		};
+		EA4F288721FA39750009BCEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA88EBD721F50F7C00D045C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA88EBDE21F50F7C00D045C6;
+			remoteInfo = Timelord;
 		};
 		EAFEAA2521F697BC00B487FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -89,6 +97,9 @@
 		EA0EE33521F518CE0030A35C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		EA0EE33821F518CE0030A35C /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		EA0EE33D21F518CE0030A35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
+		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +136,13 @@
 				EAD5B36B21F6526700C1F107 /* Result.framework in Frameworks */,
 				EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */,
 				EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA4F287F21FA39750009BCEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +194,15 @@
 			path = TimelordIntentsUI;
 			sourceTree = "<group>";
 		};
+		EA4F288321FA39750009BCEB /* TimelordUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA4F288421FA39750009BCEB /* TimelordUITests.swift */,
+				EA4F288621FA39750009BCEB /* Info.plist */,
+			);
+			path = TimelordUITests;
+			sourceTree = "<group>";
+		};
 		EA88EBD621F50F7C00D045C6 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +210,7 @@
 				EA0EE32B21F518CE0030A35C /* TimelordIntents */,
 				EA0EE33721F518CE0030A35C /* TimelordIntentsUI */,
 				EAFEAA2121F697BC00B487FC /* Core */,
+				EA4F288321FA39750009BCEB /* TimelordUITests */,
 				EA0EE33421F518CE0030A35C /* Frameworks */,
 				EA88EBE021F50F7C00D045C6 /* Products */,
 			);
@@ -195,6 +223,7 @@
 				EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */,
 				EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */,
 				EAFEAA2021F697BC00B487FC /* Core.framework */,
+				EA4F288221FA39750009BCEB /* TimelordUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,6 +302,24 @@
 			productReference = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		EA4F288121FA39750009BCEB /* TimelordUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA4F288B21FA39750009BCEB /* Build configuration list for PBXNativeTarget "TimelordUITests" */;
+			buildPhases = (
+				EA4F287E21FA39750009BCEB /* Sources */,
+				EA4F287F21FA39750009BCEB /* Frameworks */,
+				EA4F288021FA39750009BCEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA4F288821FA39750009BCEB /* PBXTargetDependency */,
+			);
+			name = TimelordUITests;
+			productName = TimelordUITests;
+			productReference = EA4F288221FA39750009BCEB /* TimelordUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EA88EBDE21F50F7C00D045C6 /* Timelord */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA88EBF121F50F7D00D045C6 /* Build configuration list for PBXNativeTarget "Timelord" */;
@@ -329,6 +376,10 @@
 					EA0EE33221F518CE0030A35C = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					EA4F288121FA39750009BCEB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = EA88EBDE21F50F7C00D045C6;
+					};
 					EA88EBDE21F50F7C00D045C6 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -359,6 +410,7 @@
 				EA0EE32921F518CE0030A35C /* TimelordIntents */,
 				EA0EE33221F518CE0030A35C /* TimelordIntentsUI */,
 				EAFEAA1F21F697BC00B487FC /* Core */,
+				EA4F288121FA39750009BCEB /* TimelordUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -372,6 +424,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EA0EE33121F518CE0030A35C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA4F288021FA39750009BCEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,6 +500,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA4F287E21FA39750009BCEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA88EBDB21F50F7C00D045C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,6 +538,11 @@
 			isa = PBXTargetDependency;
 			target = EA0EE32921F518CE0030A35C /* TimelordIntents */;
 			targetProxy = EA0EE34121F518CE0030A35C /* PBXContainerItemProxy */;
+		};
+		EA4F288821FA39750009BCEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA88EBDE21F50F7C00D045C6 /* Timelord */;
+			targetProxy = EA4F288721FA39750009BCEB /* PBXContainerItemProxy */;
 		};
 		EAFEAA2621F697BC00B487FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -580,6 +652,44 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EA4F288921FA39750009BCEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DE7S2975CH;
+				INFOPLIST_FILE = TimelordUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tombrow.timelord2.TimelordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Timelord;
+			};
+			name = Debug;
+		};
+		EA4F288A21FA39750009BCEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DE7S2975CH;
+				INFOPLIST_FILE = TimelordUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tombrow.timelord2.TimelordUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Timelord;
 			};
 			name = Release;
 		};
@@ -814,6 +924,15 @@
 			buildConfigurations = (
 				EA0EE34821F518CE0030A35C /* Debug */,
 				EA0EE34921F518CE0030A35C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA4F288B21FA39750009BCEB /* Build configuration list for PBXNativeTarget "TimelordUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA4F288921FA39750009BCEB /* Debug */,
+				EA4F288A21FA39750009BCEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
