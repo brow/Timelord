@@ -43,7 +43,7 @@ class IntentHandler: INExtension,
             let response = INAddTasksIntentResponse(
                 code: .success,
                 userActivity: nil)
-            response.addedTasks = taskTitles.map { title in
+            let tasks = taskTitles.map { title in
                 INTask(
                     title: title,
                     status: .notCompleted,
@@ -54,6 +54,9 @@ class IntentHandler: INExtension,
                     modifiedDateComponents: nil,
                     identifier: nil)
             }
+            response.addedTasks = tasks
+            reminders.append(
+                contentsOf: tasks.compactMap(Reminder.init))
             return response
         }())
     }
@@ -74,4 +77,4 @@ class IntentHandler: INExtension,
     }
 }
 
-private let reminders = [Reminder()]
+private var reminders: [Reminder] = []

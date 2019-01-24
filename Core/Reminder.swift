@@ -32,12 +32,6 @@ public struct Reminder {
             modifiedDateComponents: nil,
             identifier: nil)
     }
-    
-    // FIXME
-    public init() {
-        name = "Example timer"
-        date = Date().addingTimeInterval(600)
-    }
 }
 
 private func startDate(components: DateComponents) -> Date? {
