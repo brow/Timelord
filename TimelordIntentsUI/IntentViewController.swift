@@ -18,6 +18,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             .compactMap { $0 as? INTask }
             .compactMap(Reminder.init(task:))
         tableView.reloadData()
+        tableView.layoutIfNeeded()
         
         let configuredParameters = parameters
         let desiredSize = tableView.contentSize
@@ -59,6 +60,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
     override func loadView() {
         super.loadView()
         
+        tableView.rowHeight = 60
         tableView.backgroundColor = .clear
         tableView.separatorColor = .gray
         tableView.register(

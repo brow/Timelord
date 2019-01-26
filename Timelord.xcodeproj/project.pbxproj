@@ -23,6 +23,7 @@
 		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
 		EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */; };
+		EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
 		EAFEAA2421F697BC00B487FC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFEAA2221F697BC00B487FC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAFEAA2721F697BC00B487FC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; };
 		EAFEAA2821F697BC00B487FC /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -113,6 +114,7 @@
 		EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		EAD5B37121F65EA200C1F107 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTimeRemaining.swift; sourceTree = "<group>"; };
 		EAFEAA2021F697BC00B487FC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFEAA2221F697BC00B487FC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EAFEAA2321F697BC00B487FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				EA0EE33D21F518CE0030A35C /* Info.plist */,
 				EA0EE33821F518CE0030A35C /* IntentViewController.swift */,
 				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
+				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = TimelordIntentsUI;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 			files = (
 				EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */,
 				EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */,
+				EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

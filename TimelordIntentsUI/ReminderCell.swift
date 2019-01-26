@@ -13,14 +13,45 @@ final class ReminderCell: UITableViewCell {
         
         backgroundColor = .clear
         
-        guard
-            let textLabel = textLabel,
-            let detailTextLabel = detailTextLabel
-            else { return }
+        let textLabel = UILabel()
+        textLabel.numberOfLines = 2
+        textLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        contentView.addSubview(textLabel)
         
+        let detailTextLabel = UILabel()
         detailTextLabel.font = .monospacedDigitSystemFont(
-            ofSize: 17,
+            ofSize: 32,
             weight: .regular)
+        detailTextLabel.textColor = #colorLiteral(red: 0.3307215869, green: 0.3223211169, blue: 0.7721777558, alpha: 1)
+        contentView.addSubview(detailTextLabel)
+        
+        // Layout
+        
+        let marginsGuide = contentView.layoutMarginsGuide
+        
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.leadingAnchor
+            .constraint(equalTo: marginsGuide.leadingAnchor)
+            .isActive = true
+        textLabel.centerYAnchor
+            .constraint(equalTo: marginsGuide.centerYAnchor)
+            .isActive = true
+        textLabel.trailingAnchor
+            .constraint(
+                lessThanOrEqualTo: detailTextLabel.leadingAnchor,
+                constant: 10)
+            .isActive = true
+        
+        detailTextLabel.setContentCompressionResistancePriority(
+            .required,
+            for: .horizontal)
+        detailTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailTextLabel.trailingAnchor
+            .constraint(equalTo: marginsGuide.trailingAnchor)
+            .isActive = true
+        detailTextLabel.centerYAnchor
+            .constraint(equalTo: marginsGuide.centerYAnchor)
+            .isActive = true
         
         // Bindings
         
@@ -34,13 +65,7 @@ final class ReminderCell: UITableViewCell {
             .combineLatest(
                 currentDate,
                 model.map { $0.date }.skipRepeats())
-            .map { currentDate, reminderDate in
-                // Don't allow the interval to fall below zero.
-                (currentDate, currentDate < reminderDate
-                    ? reminderDate
-                    : currentDate)
-            }
-            .map(timeRemainingFormatter.string(from:to:))
+            .map(formatTimeRemaining(from:to:))
             .map { $0 ?? "" }
             .skipRepeats()
     }
@@ -49,13 +74,6 @@ final class ReminderCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-private let timeRemainingFormatter: DateComponentsFormatter = {
-    let formatter = DateComponentsFormatter()
-    formatter.unitsStyle = .positional
-    formatter.allowedUnits = [.hour, .minute, .second]
-    return formatter
-}()
 
 private let currentDate = Property(
     initial: Date(),
