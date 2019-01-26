@@ -18,11 +18,11 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
             .compactMap { $0 as? INTask }
             .compactMap(Reminder.init(task:))
         tableView.reloadData()
-
+        
         let configuredParameters = parameters
         let desiredSize = tableView.contentSize
         completion(
-            true,
+            !reminders.isEmpty,
             configuredParameters,
             desiredSize)
     }
@@ -60,6 +60,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
         super.loadView()
         
         tableView.backgroundColor = .clear
+        tableView.separatorColor = .gray
         tableView.register(
             ReminderCell.self,
             forCellReuseIdentifier: cellIdentifier)
