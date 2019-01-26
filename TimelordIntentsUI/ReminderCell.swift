@@ -39,7 +39,7 @@ final class ReminderCell: UITableViewCell {
         textLabel.trailingAnchor
             .constraint(
                 lessThanOrEqualTo: detailTextLabel.leadingAnchor,
-                constant: 10)
+                constant: -10)
             .isActive = true
         
         detailTextLabel.setContentCompressionResistancePriority(
