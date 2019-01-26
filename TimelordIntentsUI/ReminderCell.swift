@@ -11,6 +11,8 @@ final class ReminderCell: UITableViewCell {
             style: .value1,
             reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
+        
         guard
             let textLabel = textLabel,
             let detailTextLabel = detailTextLabel

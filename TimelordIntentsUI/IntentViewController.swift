@@ -59,6 +59,7 @@ class IntentViewController: UITableViewController, INUIHostedViewControlling {
     override func loadView() {
         super.loadView()
         
+        tableView.backgroundColor = .clear
         tableView.register(
             ReminderCell.self,
             forCellReuseIdentifier: cellIdentifier)
