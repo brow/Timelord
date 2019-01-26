@@ -15,9 +15,9 @@ func formatTimeRemaining(from: Date, to: Date) -> String {
     let second = components.second ?? 0
     
     if hour > 0 {
-        return String(format: "%02d:%02d:%02d", hour, minute, second)
+        return String(format: "%d:%02d:%02d", hour, minute, second)
     } else if minute > 0 {
-        return String(format: "%02d:%02d", minute, second)
+        return String(format: "%d:%02d", minute, second)
     } else {
         return String(format: ":%02d", second)
     }
