@@ -1,8 +1,9 @@
 import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController {
-    override func loadView() {
-        super.loadView()
+    init(enableNotifications: @escaping () -> ()) {
+        super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
         
@@ -31,5 +32,16 @@ class ViewController: UIViewController {
         stackView.trailingAnchor
             .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
             .isActive = true
+        
+        // Bindings
+        
+        button.reactive
+            .controlEvents(.touchUpInside)
+            .map { _ in }
+            .observeValues(enableNotifications)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

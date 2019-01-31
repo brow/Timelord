@@ -51,14 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         notificationsAreEnabled.value = granted
                         if !granted {
                             notificationsNotGranted.input.send(value: ())
-                            
                         }
                         observer.sendCompleted()
                     }
                 })
         }
         
-        let rootViewController = ViewController()
+        let rootViewController = ViewController(
+            enableNotifications: { enableNotifications.start() })
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = rootViewController
@@ -70,17 +70,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 title: "Allow Notifications",
                 message: "Please open Settings and select Notifications > Allow Notifications.",
                 preferredStyle: .alert)
-            let actions: [UIAlertAction] = [
-                UIAlertAction(
-                    title: "Cancel",
-                    style: .cancel,
-                    handler: nil),
-                UIAlertAction(
-                    title: "Settings",
-                    style: .default,
-                    handler: { _ in application.openSettings() }),
-            ]
-            actions.forEach(alertController.addAction)
+            let cancel = UIAlertAction(
+                title: "Not Now",
+                style: .cancel,
+                handler: nil)
+            let openSettings = UIAlertAction(
+                title: "Settings",
+                style: .default,
+                handler: { _ in application.openSettings() })
+            [cancel, openSettings].forEach(alertController.addAction)
+            alertController.preferredAction = openSettings
+            
+            rootViewController.present(
+                alertController,
+                animated: true,
+                completion: nil)
         }
         
         return true
