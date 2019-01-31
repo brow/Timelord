@@ -6,7 +6,8 @@ import Core
 
 @UIApplicationMain
 final class AppDelegate: UIResponder,
-    UIApplicationDelegate
+    UIApplicationDelegate,
+    UNUserNotificationCenterDelegate
 {
     // MARK: UIApplicationDelegate
     
@@ -18,7 +19,9 @@ final class AppDelegate: UIResponder,
         -> Bool
     {
         let notificationCenter = NotificationCenter.default
+        
         let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.delegate = self
         
         let notificationsNotGranted = Signal<(), NoError>.pipe()
         
@@ -91,5 +94,16 @@ final class AppDelegate: UIResponder,
         }
         
         return true
+    }
+    
+    // MARK: UNUserNotificationCenterDelegate
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        // Allow notifications to show when the app is open
+        completionHandler([.alert, .sound, .badge])
     }
 }
