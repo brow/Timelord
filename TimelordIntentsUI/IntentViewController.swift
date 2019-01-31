@@ -2,8 +2,9 @@ import IntentsUI
 import ReactiveSwift
 import Core
 
-class IntentViewController: UITableViewController, INUIHostedViewControlling {
-    
+final class IntentViewController: UITableViewController,
+    INUIHostedViewControlling
+{
     // MARK: INUIHostedViewControlling
     
     func configureView(

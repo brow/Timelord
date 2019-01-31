@@ -27,6 +27,7 @@
 		EAEC0AA8220374010056740B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */; };
 		EAEC0AAE220381150056740B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC0AAD220381150056740B /* Colors.swift */; };
+		EAEC0AB0220385630056740B /* RoundedRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC0AAF220385630056740B /* RoundedRectButton.swift */; };
 		EAFEAA2421F697BC00B487FC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFEAA2221F697BC00B487FC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAFEAA2721F697BC00B487FC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; };
 		EAFEAA2821F697BC00B487FC /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAFEAA2021F697BC00B487FC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -120,6 +121,7 @@
 		EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTimeRemaining.swift; sourceTree = "<group>"; };
 		EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		EAEC0AAD220381150056740B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EAEC0AAF220385630056740B /* RoundedRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectButton.swift; sourceTree = "<group>"; };
 		EAFEAA2021F697BC00B487FC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFEAA2221F697BC00B487FC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EAFEAA2321F697BC00B487FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				EA0EE32521F5167E0030A35C /* Timelord.entitlements */,
 				EA88EBEE21F50F7D00D045C6 /* Info.plist */,
 				EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */,
+				EAEC0AAF220385630056740B /* RoundedRectButton.swift */,
 				EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */,
 				EA88EBE421F50F7C00D045C6 /* ViewController.swift */,
 				EA88EBE921F50F7D00D045C6 /* Assets.xcassets */,
@@ -526,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */,
+				EAEC0AB0220385630056740B /* RoundedRectButton.swift in Sources */,
 				EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */,
 				EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */,
 			);

@@ -5,8 +5,9 @@ import UserNotifications
 import Core
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+final class AppDelegate: UIResponder,
+    UIApplicationDelegate
+{
     // MARK: UIApplicationDelegate
     
     var window: UIWindow?

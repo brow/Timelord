@@ -1,7 +1,7 @@
 import UIKit
 import ReactiveCocoa
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     init(enableNotifications: @escaping () -> ()) {
         super.init(nibName: nil, bundle: nil)
         
@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         bodyLabel.numberOfLines = 0
         bodyLabel.text = "This app lets you set timers without touching or unlocking your phone, using Siri.\n\n* * *\n\nTo get started, we need to allow Timelord to play an alarm sound when one of your timers finishes:"
         
-        let button = UIButton(type: .system)
-        button.titleLabel?.font = .systemFont(ofSize: 17)
+        let button = RoundedRectButton()
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
         button.setTitle(
             "Allow Notifications",
             for: .normal)
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                 ])
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.spacing = 8
+        stackView.spacing = 20
         view.addSubview(stackView)
         
         // Layout
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor
-            .constraint(equalTo: marginsGuide.topAnchor)
+            .constraint(equalTo: marginsGuide.topAnchor, constant: 20)
             .isActive = true
         stackView.leadingAnchor
             .constraint(equalTo: marginsGuide.leadingAnchor)
