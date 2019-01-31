@@ -2,6 +2,7 @@ import UIKit
 import ReactiveSwift
 import Result
 import UserNotifications
+import Core
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             enableNotifications: { enableNotifications.start() })
         
         let window = UIWindow(frame: UIScreen.main.bounds)
+        window.tintColor = .brand
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         self.window = window
