@@ -78,6 +78,8 @@ final class ReminderCell: UITableViewCell {
 private let currentDate = Property(
     initial: Date(),
     then: SignalProducer.timer(
-        interval: .milliseconds(50),
+        interval: .milliseconds(1000),
         on: QueueScheduler.main,
+        // Apple power efficiency guidelines suggest leeway be at least 10% of
+        // the interval, but we ignore that advice for perceptible accuracy.
         leeway: .milliseconds(10)))
