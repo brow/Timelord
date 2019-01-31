@@ -12,12 +12,12 @@ final class ViewController: UIViewController {
         titleLabel.text = "Timelord"
         
         let bodyLabel = UILabel()
-        bodyLabel.font = .systemFont(ofSize: 15)
+        bodyLabel.font = .systemFont(ofSize: 17)
         bodyLabel.numberOfLines = 0
         bodyLabel.text = "This app lets you set timers without touching or unlocking your phone, using Siri.\n\n* * *\n\nTo get started, we need to allow Timelord to play an alarm sound when one of your timers finishes:"
         
         let button = RoundedRectButton()
-        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 19)
         button.setTitle(
             "Allow Notifications",
             for: .normal)

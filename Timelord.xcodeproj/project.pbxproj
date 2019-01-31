@@ -122,6 +122,7 @@
 		EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		EAEC0AAD220381150056740B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EAEC0AAF220385630056740B /* RoundedRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectButton.swift; sourceTree = "<group>"; };
+		EAEC0AB1220390E30056740B /* ring.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ring.wav; sourceTree = "<group>"; };
 		EAFEAA2021F697BC00B487FC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFEAA2221F697BC00B487FC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EAFEAA2321F697BC00B487FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 				EAEC0AAF220385630056740B /* RoundedRectButton.swift */,
 				EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */,
 				EA88EBE421F50F7C00D045C6 /* ViewController.swift */,
+				EAEC0AB1220390E30056740B /* ring.wav */,
 				EA88EBE921F50F7D00D045C6 /* Assets.xcassets */,
 				EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */,
 			);

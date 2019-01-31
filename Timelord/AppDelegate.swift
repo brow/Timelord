@@ -62,6 +62,38 @@ final class AppDelegate: UIResponder,
                 })
         }
         
+        let reminders = MutableProperty([Reminder]())
+        
+        reminders
+            .producer
+            .skipRepeats()
+            .startWithValues { reminders in
+                userNotificationCenter.removeAllPendingNotificationRequests()
+                
+                let calendar = Calendar.current
+                for reminder in reminders {
+                    userNotificationCenter.add(
+                        UNNotificationRequest(
+                            identifier: UUID().uuidString,
+                            content: { () -> UNNotificationContent in
+                                let content = UNMutableNotificationContent()
+                                content.title = reminder.name
+                                content.subtitle = "Timer finished"
+                                content.sound = UNNotificationSound(
+                                    named: .init("ring.wav"))
+                                return content
+                            }(),
+                            trigger: UNCalendarNotificationTrigger(
+                                // If we use `Calendar.dateComponents(in:from:)` instead of
+                                // specifying date components explicitly, the notification
+                                // center silently fails to schedule the notification.
+                                dateMatching: calendar.dateComponents(
+                                    [.year, .month, .day, .hour, .minute, .timeZone],
+                                    from: reminder.date),
+                                repeats: false)))
+                }
+        }
+        
         let rootViewController = ViewController(
             enableNotifications: { enableNotifications.start() })
         
