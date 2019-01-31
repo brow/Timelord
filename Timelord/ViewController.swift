@@ -7,15 +7,30 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        let titleLabel = UILabel()
+        titleLabel.font = .boldSystemFont(ofSize: 36)
+        titleLabel.text = "Timelord"
+        
+        let bodyLabel = UILabel()
+        bodyLabel.font = .systemFont(ofSize: 15)
+        bodyLabel.numberOfLines = 0
+        bodyLabel.text = "Thanks for installing me! Now you can set timers without touching or unlocking your phone."
+        
         let button = UIButton(type: .system)
+        button.titleLabel?.font = .systemFont(ofSize: 17)
         button.setTitle(
             "Allow Notifications",
             for: .normal)
         
         let stackView = UIStackView(
-            arrangedSubviews: [button])
+            arrangedSubviews: [
+                titleLabel,
+                bodyLabel,
+                button,
+                ])
         stackView.axis = .vertical
         stackView.alignment = .leading
+        stackView.spacing = 8
         view.addSubview(stackView)
         
         // Layout
