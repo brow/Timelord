@@ -76,6 +76,21 @@ final class AppDelegate: UIResponder,
 
                 let calendar = Calendar.current
                 for reminder in reminders {
+                    // If we use `Calendar.dateComponents(in:from:)` instead of
+                    // specifying date components explicitly, the notification
+                    // center silently fails to schedule the notification.
+                    let dateComponents = calendar.dateComponents(
+                        [
+                            .year,
+                            .month,
+                            .day,
+                            .hour,
+                            .minute,
+                            .second,
+                            .nanosecond,
+                            .timeZone,
+                            ],
+                        from: reminder.date)
                     userNotificationCenter.add(
                         UNNotificationRequest(
                             identifier: UUID().uuidString,
@@ -88,12 +103,7 @@ final class AppDelegate: UIResponder,
                                 return content
                             }(),
                             trigger: UNCalendarNotificationTrigger(
-                                // If we use `Calendar.dateComponents(in:from:)` instead of
-                                // specifying date components explicitly, the notification
-                                // center silently fails to schedule the notification.
-                                dateMatching: calendar.dateComponents(
-                                    [.year, .month, .day, .hour, .minute, .second, .timeZone],
-                                    from: reminder.date),
+                                dateMatching: dateComponents,
                                 repeats: false)))
                 }
         }
