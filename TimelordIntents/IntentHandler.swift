@@ -56,7 +56,7 @@ class IntentHandler: INExtension,
                     identifier: nil)
             }
             response.addedTasks = tasks
-            reminders.value.append(
+            persistedReminders.value.append(
                 contentsOf: tasks.compactMap(Reminder.init))
             return response
         }())
@@ -72,13 +72,8 @@ class IntentHandler: INExtension,
             let response = INSearchForNotebookItemsIntentResponse(
                 code: .success,
                 userActivity: nil)
-            response.tasks = reminders.value.map { $0.task }
+            response.tasks = persistedReminders.value.map { $0.task }
             return response
         }())
     }
 }
-
-private var reminders = MutableProperty<[Reminder]>(
-    userDefaults: .standard,
-    key: "Reminders",
-    defaultValue: [])
