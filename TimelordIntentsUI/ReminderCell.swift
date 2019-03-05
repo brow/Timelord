@@ -22,7 +22,7 @@ final class ReminderCell: UITableViewCell {
         detailTextLabel.font = .monospacedDigitSystemFont(
             ofSize: 32,
             weight: .regular)
-        detailTextLabel.textColor = #colorLiteral(red: 0.3307215869, green: 0.3223211169, blue: 0.7721777558, alpha: 1)
+        detailTextLabel.textColor = .brand
         contentView.addSubview(detailTextLabel)
         
         // Layout
