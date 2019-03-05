@@ -97,7 +97,7 @@ final class AppDelegate: UIResponder,
                             content: { () -> UNNotificationContent in
                                 let content = UNMutableNotificationContent()
                                 content.title = reminder.name
-                                content.subtitle = "Timer finished"
+                                content.body = "Timer finished"
                                 content.sound = UNNotificationSound(
                                     named: .init("ring.wav"))
                                 return content
