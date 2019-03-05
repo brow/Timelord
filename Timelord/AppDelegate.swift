@@ -62,14 +62,18 @@ final class AppDelegate: UIResponder,
                 })
         }
         
-        let reminders = MutableProperty([Reminder]())
+        let reminders = MutableProperty([
+            Reminder(
+                name: "Test the app",
+                date: Date().addingTimeInterval(1))
+            ])
         
         reminders
             .producer
             .skipRepeats()
             .startWithValues { reminders in
                 userNotificationCenter.removeAllPendingNotificationRequests()
-                
+
                 let calendar = Calendar.current
                 for reminder in reminders {
                     userNotificationCenter.add(
@@ -88,7 +92,7 @@ final class AppDelegate: UIResponder,
                                 // specifying date components explicitly, the notification
                                 // center silently fails to schedule the notification.
                                 dateMatching: calendar.dateComponents(
-                                    [.year, .month, .day, .hour, .minute, .timeZone],
+                                    [.year, .month, .day, .hour, .minute, .second, .timeZone],
                                     from: reminder.date),
                                 repeats: false)))
                 }
