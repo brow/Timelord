@@ -108,6 +108,8 @@
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutablePropertyPersistence.swift; sourceTree = "<group>"; };
+		EA58059A228B268D00B51567 /* TimelordIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntents.entitlements; sourceTree = "<group>"; };
+		EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntentsUI.entitlements; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		EA0EE32B21F518CE0030A35C /* TimelordIntents */ = {
 			isa = PBXGroup;
 			children = (
+				EA58059A228B268D00B51567 /* TimelordIntents.entitlements */,
 				EA0EE32E21F518CE0030A35C /* Info.plist */,
 				EA0EE32C21F518CE0030A35C /* IntentHandler.swift */,
 			);
@@ -202,6 +205,7 @@
 		EA0EE33721F518CE0030A35C /* TimelordIntentsUI */ = {
 			isa = PBXGroup;
 			children = (
+				EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */,
 				EA0EE33D21F518CE0030A35C /* Info.plist */,
 				EA0EE33821F518CE0030A35C /* IntentViewController.swift */,
 				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
@@ -393,9 +397,19 @@
 				TargetAttributes = {
 					EA0EE32921F518CE0030A35C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EA0EE33221F518CE0030A35C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EA4F288121FA39750009BCEB = {
 						CreatedOnToolsVersion = 10.1;
@@ -593,6 +607,7 @@
 		EA0EE34521F518CE0030A35C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimelordIntentsUI/TimelordIntentsUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -616,6 +631,7 @@
 		EA0EE34621F518CE0030A35C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimelordIntentsUI/TimelordIntentsUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -639,6 +655,7 @@
 		EA0EE34821F518CE0030A35C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimelordIntents/TimelordIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -662,6 +679,7 @@
 		EA0EE34921F518CE0030A35C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimelordIntents/TimelordIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DE7S2975CH;
 				FRAMEWORK_SEARCH_PATHS = (
