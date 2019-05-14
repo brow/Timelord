@@ -24,10 +24,9 @@ final class IntentViewController: UITableViewController,
 
             })
         } else {
-            reminders = parameters
-                .compactMap(interaction.parameterValue(for:))
-                .compactMap { $0 as? INTask }
-                .compactMap(Reminder.init(task:))
+            reminders = parameters.isEmpty
+                ? []
+                : persistedReminders.value.suffix(1)
             configuredParameters = parameters
         }
         

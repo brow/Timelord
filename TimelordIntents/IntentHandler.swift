@@ -44,20 +44,33 @@ class IntentHandler: INExtension,
             let response = INAddTasksIntentResponse(
                 code: .success,
                 userActivity: nil)
-            let tasks = taskTitles.map { title in
+            
+            let reminders = taskTitles.compactMap { title -> Reminder? in
+                guard
+                    let startDateComponents = temporalEventTrigger
+                        .dateComponentsRange
+                        .startDateComponents,
+                    let startDate = startDate(
+                        components: startDateComponents)
+                    else { return nil }
+                return Reminder(
+                    name: title.spokenPhrase,
+                    date: startDate)
+            }
+            persistedReminders.value.append(
+                contentsOf: reminders)
+            
+            response.addedTasks = reminders.map { reminder in
                 INTask(
-                    title: title,
+                    title: INSpeakableString(spokenPhrase: reminder.name),
                     status: .notCompleted,
                     taskType: .notCompletable,
                     spatialEventTrigger: nil,
-                    temporalEventTrigger: temporalEventTrigger,
+                    temporalEventTrigger: nil,
                     createdDateComponents: nil,
                     modifiedDateComponents: nil,
                     identifier: nil)
             }
-            response.addedTasks = tasks
-            persistedReminders.value.append(
-                contentsOf: tasks.compactMap(Reminder.init))
             return response
         }())
     }
@@ -76,4 +89,17 @@ class IntentHandler: INExtension,
             return response
         }())
     }
+}
+
+private func startDate(components: DateComponents) -> Date? {
+    let calendar = Calendar.current
+    let currentDateComponents = calendar.dateComponents(
+        [.second, .nanosecond],
+        from: Date())
+    
+    var components = components
+    components.second = currentDateComponents.second
+    components.nanosecond = currentDateComponents.nanosecond
+    
+    return calendar.date(from: components)
 }
