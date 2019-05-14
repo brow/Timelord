@@ -1,6 +1,5 @@
 import UIKit
 import ReactiveSwift
-import Result
 import UserNotifications
 import Core
 
@@ -23,7 +22,7 @@ final class AppDelegate: UIResponder,
         let userNotificationCenter = UNUserNotificationCenter.current()
         userNotificationCenter.delegate = self
         
-        let notificationsNotGranted = Signal<(), NoError>.pipe()
+        let notificationsNotGranted = Signal<(), Never>.pipe()
         
         let appWasForegrounded = SignalProducer(notificationCenter.reactive
             .notifications(
@@ -46,7 +45,7 @@ final class AppDelegate: UIResponder,
             }
             .observe(on: QueueScheduler.main)
         
-        let enableNotifications = SignalProducer<Never, NoError> {
+        let enableNotifications = SignalProducer<Never, Never> {
             observer, _ in
             
             userNotificationCenter.requestAuthorization(

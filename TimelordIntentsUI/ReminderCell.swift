@@ -66,7 +66,6 @@ final class ReminderCell: UITableViewCell {
                 currentDate,
                 model.map { $0.date }.skipRepeats())
             .map(formatTimeRemaining(from:to:))
-            .map { $0 ?? "" }
             .skipRepeats()
     }
     
