@@ -34,10 +34,15 @@ final class IntentViewController: UITableViewController,
         tableView.reloadData()
         tableView.layoutIfNeeded()
         
+        var desiredSize = tableView.contentSize
+        
+        // Hide the final row separator
+        desiredSize.height -= 1 / UIScreen.main.scale
+            
         completion(
             !reminders.isEmpty,
             configuredParameters,
-            tableView.contentSize)
+            desiredSize)
     }
     
     // MARK: UITableViewDataSource
