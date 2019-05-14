@@ -14,19 +14,30 @@ final class IntentViewController: UITableViewController,
         context: INUIHostedViewContext,
         completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void)
     {
-        reminders = parameters
-            .compactMap(interaction.parameterValue(for:))
-            .compactMap { $0 as? INTask }
-            .compactMap(Reminder.init(task:))
+        let configuredParameters: Set<INParameter>
+        if interaction.intentResponse is INSearchForNotebookItemsIntentResponse {
+            reminders = parameters.isEmpty ? [] : persistedReminders.value
+            configuredParameters = Set(reminders.indices.compactMap { index in
+                INParameter(
+                    for: INSearchForNotebookItemsIntentResponse.self,
+                    keyPath: "tasks[\(index)]")
+
+            })
+        } else {
+            reminders = parameters
+                .compactMap(interaction.parameterValue(for:))
+                .compactMap { $0 as? INTask }
+                .compactMap(Reminder.init(task:))
+            configuredParameters = parameters
+        }
+        
         tableView.reloadData()
         tableView.layoutIfNeeded()
         
-        let configuredParameters = parameters
-        let desiredSize = tableView.contentSize
         completion(
             !reminders.isEmpty,
             configuredParameters,
-            desiredSize)
+            tableView.contentSize)
     }
     
     // MARK: UITableViewDataSource
