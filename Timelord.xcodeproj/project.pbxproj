@@ -16,6 +16,7 @@
 		EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */; };
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
+		EA807503228C87E5006B4943 /* ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = EAEC0AB1220390E30056740B /* ring.wav */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
 		EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE921F50F7D00D045C6 /* Assets.xcassets */; };
@@ -479,6 +480,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA807503228C87E5006B4943 /* ring.wav in Resources */,
 				EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */,
 				EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */,
 			);
