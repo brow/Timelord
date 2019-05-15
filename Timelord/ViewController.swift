@@ -20,14 +20,26 @@ final class ViewController: UIViewController {
         bodyLabel.numberOfLines = 0
         bodyLabel.text = "Set timers without touching or unlocking your phone, using Siri."
         
+        let separatorLabel = UILabel()
+        separatorLabel.font = .systemFont(ofSize: 17)
+        separatorLabel.textColor = .gray
+        separatorLabel.text = "﹡ ﹡ ﹡"
+        
         let notificationsView = makeNotificationsView(
             enableNotifications: enableNotifications)
+        
+        let instructionsLabel = UILabel()
+        instructionsLabel.font = .systemFont(ofSize: 17)
+        instructionsLabel.numberOfLines = 0
+        instructionsLabel.text = "You can ask Siri…\n\n• \"In Timelord remind me in 20 minutes to take yams out\"\n\n• \"Show Timelord reminders\""
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 titleLabel,
                 bodyLabel,
+                separatorLabel,
                 notificationsView,
+                instructionsLabel,
             ])
         stackView.axis = .vertical
         stackView.spacing = 20
@@ -49,6 +61,7 @@ final class ViewController: UIViewController {
             .isActive = true
         
         notificationsView.reactive.isHidden <~ notificationsAreEnabled
+        instructionsLabel.reactive.isHidden <~ notificationsAreEnabled.map(!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,11 +73,6 @@ private func makeNotificationsView(
     enableNotifications: @escaping () -> ())
     -> UIView
 {
-    let separatorLabel = UILabel()
-    separatorLabel.font = .systemFont(ofSize: 17)
-    separatorLabel.textColor = .gray
-    separatorLabel.text = "﹡ ﹡ ﹡"
-    
     let notificationsLabel = UILabel()
     notificationsLabel.font = .systemFont(ofSize: 17)
     notificationsLabel.numberOfLines = 0
@@ -78,7 +86,6 @@ private func makeNotificationsView(
     
     let stackView = UIStackView(
         arrangedSubviews: [
-            separatorLabel,
             notificationsLabel,
             notificationsButton,
         ])
