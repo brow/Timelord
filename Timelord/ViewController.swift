@@ -14,23 +14,44 @@ final class ViewController: UIViewController {
         let bodyLabel = UILabel()
         bodyLabel.font = .systemFont(ofSize: 17)
         bodyLabel.numberOfLines = 0
-        bodyLabel.text = "Set timers without touching or unlocking your phone, using Siri.\n\n* * *\n\nTo get started, we need to allow the app to play an alarm sound when one of your timers finishes:"
+        bodyLabel.text = "Set timers without touching or unlocking your phone, using Siri."
         
-        let button = RoundedRectButton()
-        button.titleLabel?.font = .boldSystemFont(ofSize: 19)
-        button.setTitle(
+        let separatorLabel = UILabel()
+        separatorLabel.font = .systemFont(ofSize: 17)
+        separatorLabel.textColor = .gray
+        separatorLabel.text = "﹡ ﹡ ﹡"
+        
+        let notificationsLabel = UILabel()
+        notificationsLabel.font = .systemFont(ofSize: 17)
+        notificationsLabel.numberOfLines = 0
+        notificationsLabel.text = "To get started, allow the app to sound an alarm when one of your timers finishes:"
+        
+        let notificationsButton = RoundedRectButton()
+        notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
+        notificationsButton.setTitle(
             "Allow Notifications",
             for: .normal)
+        
+        let spacing: CGFloat = 20
+        
+        let promptStackView = UIStackView(
+            arrangedSubviews: [
+                separatorLabel,
+                notificationsLabel,
+                notificationsButton,
+            ])
+        promptStackView.axis = .vertical
+        promptStackView.spacing = spacing
+        promptStackView.alignment = .leading
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 titleLabel,
                 bodyLabel,
-                button,
-                ])
+                promptStackView,
+            ])
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 20
+        stackView.spacing = spacing
         view.addSubview(stackView)
         
         // Layout
@@ -50,7 +71,7 @@ final class ViewController: UIViewController {
         
         // Bindings
         
-        button.reactive
+        notificationsButton.reactive
             .controlEvents(.touchUpInside)
             .map { _ in }
             .observeValues(enableNotifications)
