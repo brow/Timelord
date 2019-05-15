@@ -61,13 +61,7 @@ final class AppDelegate: UIResponder,
                 })
         }
         
-        let reminders = MutableProperty([
-            Reminder(
-                name: "Test the app",
-                date: Date().addingTimeInterval(1))
-            ])
-        
-        reminders
+        persistedReminders
             .producer
             .skipRepeats()
             .startWithValues { reminders in
