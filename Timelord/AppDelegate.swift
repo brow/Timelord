@@ -102,6 +102,7 @@ final class AppDelegate: UIResponder,
         }
         
         let rootViewController = ViewController(
+            notificationsAreEnabled: notificationsAreEnabled.skipRepeats(),
             enableNotifications: { enableNotifications.start() })
         
         let window = UIWindow(frame: UIScreen.main.bounds)

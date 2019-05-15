@@ -1,8 +1,12 @@
 import UIKit
+import ReactiveSwift
 import ReactiveCocoa
 
 final class ViewController: UIViewController {
-    init(enableNotifications: @escaping () -> ()) {
+    init(
+        notificationsAreEnabled: Property<Bool>,
+        enableNotifications: @escaping () -> ())
+    {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
@@ -34,21 +38,21 @@ final class ViewController: UIViewController {
         
         let spacing: CGFloat = 20
         
-        let promptStackView = UIStackView(
+        let notificationsStackView = UIStackView(
             arrangedSubviews: [
                 separatorLabel,
                 notificationsLabel,
                 notificationsButton,
             ])
-        promptStackView.axis = .vertical
-        promptStackView.spacing = spacing
-        promptStackView.alignment = .leading
+        notificationsStackView.axis = .vertical
+        notificationsStackView.spacing = spacing
+        notificationsStackView.alignment = .leading
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 titleLabel,
                 bodyLabel,
-                promptStackView,
+                notificationsStackView,
             ])
         stackView.axis = .vertical
         stackView.spacing = spacing
@@ -75,6 +79,8 @@ final class ViewController: UIViewController {
             .controlEvents(.touchUpInside)
             .map { _ in }
             .observeValues(enableNotifications)
+        
+        notificationsStackView.reactive.isHidden <~ notificationsAreEnabled
     }
     
     required init?(coder aDecoder: NSCoder) {
