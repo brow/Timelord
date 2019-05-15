@@ -20,42 +20,17 @@ final class ViewController: UIViewController {
         bodyLabel.numberOfLines = 0
         bodyLabel.text = "Set timers without touching or unlocking your phone, using Siri."
         
-        let separatorLabel = UILabel()
-        separatorLabel.font = .systemFont(ofSize: 17)
-        separatorLabel.textColor = .gray
-        separatorLabel.text = "﹡ ﹡ ﹡"
-        
-        let notificationsLabel = UILabel()
-        notificationsLabel.font = .systemFont(ofSize: 17)
-        notificationsLabel.numberOfLines = 0
-        notificationsLabel.text = "To get started, allow the app to sound an alarm when one of your timers finishes:"
-        
-        let notificationsButton = RoundedRectButton()
-        notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
-        notificationsButton.setTitle(
-            "Allow Notifications",
-            for: .normal)
-        
-        let spacing: CGFloat = 20
-        
-        let notificationsStackView = UIStackView(
-            arrangedSubviews: [
-                separatorLabel,
-                notificationsLabel,
-                notificationsButton,
-            ])
-        notificationsStackView.axis = .vertical
-        notificationsStackView.spacing = spacing
-        notificationsStackView.alignment = .leading
+        let notificationsView = makeNotificationsView(
+            enableNotifications: enableNotifications)
         
         let stackView = UIStackView(
             arrangedSubviews: [
                 titleLabel,
                 bodyLabel,
-                notificationsStackView,
+                notificationsView,
             ])
         stackView.axis = .vertical
-        stackView.spacing = spacing
+        stackView.spacing = 20
         view.addSubview(stackView)
         
         // Layout
@@ -73,17 +48,50 @@ final class ViewController: UIViewController {
             .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
             .isActive = true
         
-        // Bindings
-        
-        notificationsButton.reactive
-            .controlEvents(.touchUpInside)
-            .map { _ in }
-            .observeValues(enableNotifications)
-        
-        notificationsStackView.reactive.isHidden <~ notificationsAreEnabled
+        notificationsView.reactive.isHidden <~ notificationsAreEnabled
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private func makeNotificationsView(
+    enableNotifications: @escaping () -> ())
+    -> UIView
+{
+    let separatorLabel = UILabel()
+    separatorLabel.font = .systemFont(ofSize: 17)
+    separatorLabel.textColor = .gray
+    separatorLabel.text = "﹡ ﹡ ﹡"
+    
+    let notificationsLabel = UILabel()
+    notificationsLabel.font = .systemFont(ofSize: 17)
+    notificationsLabel.numberOfLines = 0
+    notificationsLabel.text = "To get started, allow the app to sound an alarm when one of your timers finishes:"
+    
+    let notificationsButton = RoundedRectButton()
+    notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
+    notificationsButton.setTitle(
+        "Allow Notifications",
+        for: .normal)
+    
+    let stackView = UIStackView(
+        arrangedSubviews: [
+            separatorLabel,
+            notificationsLabel,
+            notificationsButton,
+        ])
+    stackView.axis = .vertical
+    stackView.spacing = 20
+    stackView.alignment = .leading
+    
+    // Bindings
+    
+    notificationsButton.reactive
+        .controlEvents(.touchUpInside)
+        .map { _ in }
+        .observeValues(enableNotifications)
+    
+    return stackView
 }
