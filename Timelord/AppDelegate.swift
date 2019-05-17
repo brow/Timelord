@@ -61,46 +61,6 @@ final class AppDelegate: UIResponder,
                 })
         }
         
-        persistedReminders
-            .producer
-            .skipRepeats()
-            .startWithValues { reminders in
-                userNotificationCenter.removeAllPendingNotificationRequests()
-
-                let calendar = Calendar.current
-                for reminder in reminders {
-                    // If we use `Calendar.dateComponents(in:from:)` instead of
-                    // specifying date components explicitly, the notification
-                    // center silently fails to schedule the notification.
-                    let dateComponents = calendar.dateComponents(
-                        [
-                            .year,
-                            .month,
-                            .day,
-                            .hour,
-                            .minute,
-                            .second,
-                            .nanosecond,
-                            .timeZone,
-                            ],
-                        from: reminder.date)
-                    userNotificationCenter.add(
-                        UNNotificationRequest(
-                            identifier: UUID().uuidString,
-                            content: { () -> UNNotificationContent in
-                                let content = UNMutableNotificationContent()
-                                content.title = reminder.name
-                                content.body = "Timer finished"
-                                content.sound = UNNotificationSound(
-                                    named: .init("ring.wav"))
-                                return content
-                            }(),
-                            trigger: UNCalendarNotificationTrigger(
-                                dateMatching: dateComponents,
-                                repeats: false)))
-                }
-        }
-        
         let rootViewController = ViewController(
             notificationsAreEnabled: notificationsAreEnabled.skipRepeats(),
             enableNotifications: { enableNotifications.start() })
