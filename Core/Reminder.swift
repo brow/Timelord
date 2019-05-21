@@ -9,19 +9,5 @@ public struct Reminder: Hashable, Codable {
         self.name = name
         self.date = date
     }
-    
-    public var task: INTask {
-        return INTask(
-            title: INSpeakableString(spokenPhrase: name),
-            status: .notCompleted,
-            taskType: .notCompletable,
-            spatialEventTrigger: nil,
-            temporalEventTrigger: INTemporalEventTrigger(
-                startDateComponents: Calendar.current.dateComponents(
-                    in: .current,
-                    from: date)),
-            createdDateComponents: nil,
-            modifiedDateComponents: nil,
-            identifier: nil)
-    }
 }
+

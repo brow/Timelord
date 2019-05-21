@@ -89,9 +89,28 @@ class IntentHandler: INExtension,
                 code: .success,
                 userActivity: nil)
             let now = Date()
+            let calendar = Calendar.current
+            response.sortType = .asIs
             response.tasks = persistedReminders.value
                 .filter { $0.date > now }
-                .map { $0.task }
+                .map { reminder in
+                    INTask(
+                        title: INSpeakableString(spokenPhrase: reminder.name),
+                        status: .notCompleted,
+                        taskType: .notCompletable,
+                        spatialEventTrigger: nil,
+                        // If the trigger is less than a day in the future,
+                        // Siri says "found 1 overdue reminder". By setting the
+                        // trigger further out, we can make Siri say "found
+                        // 1 *scheduled* reminder", which seems less confusing.
+                        temporalEventTrigger: INTemporalEventTrigger(
+                            startDateComponents: calendar.dateComponents(
+                                in: .current,
+                                from: now.addingTimeInterval(86400))),
+                        createdDateComponents: nil,
+                        modifiedDateComponents: nil,
+                        identifier: nil)
+                }
             return response
         }())
     }
