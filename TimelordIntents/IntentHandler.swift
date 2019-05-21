@@ -45,7 +45,7 @@ class IntentHandler: INExtension,
                 code: .success,
                 userActivity: nil)
             
-            let reminders = taskTitles.compactMap { title -> Reminder? in
+            let addedReminders = taskTitles.compactMap { title -> Reminder? in
                 guard
                     let startDateComponents = temporalEventTrigger
                         .dateComponentsRange
@@ -57,10 +57,13 @@ class IntentHandler: INExtension,
                     name: title.spokenPhrase,
                     date: startDate)
             }
-            persistedReminders.value.append(
-                contentsOf: reminders)
+            persistedReminders.modify { reminders in
+                let now = Date()
+                reminders.removeAll { $0.date < now }
+                reminders.append(contentsOf: addedReminders)
+            }
             
-            response.addedTasks = reminders.map { reminder in
+            response.addedTasks = addedReminders.map { reminder in
                 INTask(
                     title: INSpeakableString(spokenPhrase: reminder.name),
                     status: .notCompleted,
@@ -85,7 +88,10 @@ class IntentHandler: INExtension,
             let response = INSearchForNotebookItemsIntentResponse(
                 code: .success,
                 userActivity: nil)
-            response.tasks = persistedReminders.value.map { $0.task }
+            let now = Date()
+            response.tasks = persistedReminders.value
+                .filter { $0.date > now }
+                .map { $0.task }
             return response
         }())
     }
