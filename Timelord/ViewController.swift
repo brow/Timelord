@@ -18,12 +18,7 @@ final class ViewController: UIViewController {
         let bodyLabel = UILabel()
         bodyLabel.font = .systemFont(ofSize: 17)
         bodyLabel.numberOfLines = 0
-        bodyLabel.text = "Set timers without touching or unlocking your phone, using Siri."
-        
-        let separatorLabel = UILabel()
-        separatorLabel.font = .systemFont(ofSize: 17)
-        separatorLabel.textColor = .gray
-        separatorLabel.text = "﹡ ﹡ ﹡"
+        bodyLabel.text = "Set timers without touching or unlocking your phone, using your voice."
         
         let notificationsView = makeNotificationsView(
             enableNotifications: enableNotifications)
@@ -34,7 +29,6 @@ final class ViewController: UIViewController {
             arrangedSubviews: [
                 titleLabel,
                 bodyLabel,
-                separatorLabel,
                 notificationsView,
                 instructionsView,
             ])
@@ -67,11 +61,23 @@ final class ViewController: UIViewController {
 }
 
 private func makeInstructionsView() -> UIView {
+    let header = UILabel()
+    header.font = .boldSystemFont(ofSize: 19)
+    header.numberOfLines = 0
+    header.text = "You can ask Siri…"
+    
     let label = UILabel()
     label.font = .systemFont(ofSize: 17)
     label.numberOfLines = 0
-    label.text = "You can ask Siri…\n\n• \"In Timelord remind me in 20 minutes to take yams out\"\n\n• \"Show Timelord reminders\""
-    return label
+    label.text = "• \"In Timelord remind me in 20 minutes to take yams out\"\n\n• \"Show Timelord reminders\""
+    
+    let stackView = UIStackView(arrangedSubviews: [
+        header,
+        label,
+        ])
+    stackView.axis = .vertical
+    stackView.spacing = 10
+    return stackView
 }
 
 private func makeNotificationsView(
