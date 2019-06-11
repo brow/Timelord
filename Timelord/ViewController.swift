@@ -28,10 +28,7 @@ final class ViewController: UIViewController {
         let notificationsView = makeNotificationsView(
             enableNotifications: enableNotifications)
         
-        let instructionsLabel = UILabel()
-        instructionsLabel.font = .systemFont(ofSize: 17)
-        instructionsLabel.numberOfLines = 0
-        instructionsLabel.text = "You can ask Siri…\n\n• \"In Timelord remind me in 20 minutes to take yams out\"\n\n• \"Show Timelord reminders\""
+        let instructionsView = makeInstructionsView()
         
         let stackView = UIStackView(
             arrangedSubviews: [
@@ -39,7 +36,7 @@ final class ViewController: UIViewController {
                 bodyLabel,
                 separatorLabel,
                 notificationsView,
-                instructionsLabel,
+                instructionsView,
             ])
         stackView.axis = .vertical
         stackView.spacing = 20
@@ -61,12 +58,20 @@ final class ViewController: UIViewController {
             .isActive = true
         
         notificationsView.reactive.isHidden <~ notificationsAreEnabled
-        instructionsLabel.reactive.isHidden <~ notificationsAreEnabled.map(!)
+        instructionsView.reactive.isHidden <~ notificationsAreEnabled.map(!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private func makeInstructionsView() -> UIView {
+    let label = UILabel()
+    label.font = .systemFont(ofSize: 17)
+    label.numberOfLines = 0
+    label.text = "You can ask Siri…\n\n• \"In Timelord remind me in 20 minutes to take yams out\"\n\n• \"Show Timelord reminders\""
+    return label
 }
 
 private func makeNotificationsView(
