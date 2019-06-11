@@ -1,10 +1,9 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import Core
 
-final class ReminderCell: UITableViewCell {
-    let model = MutableProperty<Reminder?>(nil)
+public final class ReminderCell: UITableViewCell {
+    public let model = MutableProperty<Reminder?>(nil)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(

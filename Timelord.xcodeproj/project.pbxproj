@@ -21,10 +21,10 @@
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
 		EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE921F50F7D00D045C6 /* Assets.xcassets */; };
 		EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */; };
+		EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
+		EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
 		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
-		EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
 		EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */; };
-		EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
 		EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */; };
 		EAEC0AA8220374010056740B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */; };
@@ -209,8 +209,6 @@
 				EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */,
 				EA0EE33D21F518CE0030A35C /* Info.plist */,
 				EA0EE33821F518CE0030A35C /* IntentViewController.swift */,
-				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
-				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = TimelordIntentsUI;
 			sourceTree = "<group>";
@@ -275,6 +273,8 @@
 				EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */,
 				EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */,
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
+				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
+				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -533,8 +533,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */,
-				EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */,
-				EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,10 +560,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */,
+				EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */,
 				EAEC0AAE220381150056740B /* Colors.swift in Sources */,
 				EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */,
 				EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */,
 				EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */,
+				EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
