@@ -14,15 +14,21 @@ final class ViewController: UITableViewController {
         tableView.rowHeight = ReminderCell.height
         tableView.tableFooterView = UIView()
         
+        
+
+        
         let tableViewModel = Property
             .combineLatest(
                 persistedReminders,
                 notificationsAreEnabled)
-            .map { persistedReminders, notificationsAreEnabled in
-                TableViewModel(sectionModels: [
+            .map { persistedReminders, notificationsAreEnabled -> TableViewModel in
+                var rows = [Row.header]
+                rows.append(
+                    contentsOf: persistedReminders.map(Row.reminder))
+                return TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",
-                        cellViewModels: persistedReminders.map(Row.reminder)),
+                        cellViewModels: rows),
                 ])
             }
         
@@ -50,10 +56,18 @@ final class ViewController: UITableViewController {
 }
 
 enum Row: TableCellViewModel {
+    case header
     case reminder(Reminder)
     
     public var registrationInfo: ViewRegistrationInfo {
-        return ViewRegistrationInfo(classType: ReminderCell.self)
+        return ViewRegistrationInfo(classType: {
+            switch self {
+            case .header:
+                return HeaderCell.self
+            case .reminder:
+                return ReminderCell.self
+            }
+        }())
     }
     
     public var accessibilityFormat: CellAccessibilityFormat {
@@ -61,18 +75,24 @@ enum Row: TableCellViewModel {
     }
     
     public var rowHeight: CGFloat? {
-        return ReminderCell.height
+        switch self {
+        case .header:
+            return UITableView.automaticDimension
+        case .reminder:
+            return ReminderCell.height
+        }
     }
     
     public func applyViewModelToCell(_ cell: UITableViewCell) {
         switch self {
+        case .header:
+            break
         case .reminder(let reminder):
             guard
                 let cell = cell as? ReminderCell
                 else { return }
             cell.model.value = reminder
         }
-       
     }
 }
 
@@ -95,7 +115,7 @@ final class HeaderCell: UITableViewCell {
                 bodyLabel,
             ])
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 14
         contentView.addSubview(stackView)
         
         // Layout
@@ -107,13 +127,15 @@ final class HeaderCell: UITableViewCell {
             .constraint(equalTo: marginsGuide.topAnchor)
             .isActive = true
         stackView.bottomAnchor
-            .constraint(equalTo: marginsGuide.bottomAnchor)
+            .constraint(
+                equalTo: marginsGuide.bottomAnchor,
+                constant: -10)
             .isActive = true
         stackView.leadingAnchor
             .constraint(equalTo: marginsGuide.leadingAnchor)
             .isActive = true
         stackView.trailingAnchor
-            .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
+            .constraint(equalTo: marginsGuide.trailingAnchor)
             .isActive = true
     }
     
