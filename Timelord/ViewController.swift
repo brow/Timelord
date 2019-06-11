@@ -10,6 +10,7 @@ final class ViewController: UITableViewController {
     {
         super.init(style: .plain)
         
+        tableView.rowHeight = ReminderCell.height
         tableView.register(
             ReminderCell.self,
             forCellReuseIdentifier: reminderCellIdentifier)

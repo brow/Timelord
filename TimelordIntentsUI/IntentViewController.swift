@@ -76,7 +76,7 @@ final class IntentViewController: UITableViewController,
     override func loadView() {
         super.loadView()
         
-        tableView.rowHeight = 60
+        tableView.rowHeight = ReminderCell.height
         tableView.backgroundColor = .clear
         tableView.separatorColor = .gray
         tableView.register(

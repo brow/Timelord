@@ -3,6 +3,8 @@ import ReactiveSwift
 import ReactiveCocoa
 
 public final class ReminderCell: UITableViewCell {
+    public static let height: CGFloat = 60
+    
     public let model = MutableProperty<Reminder?>(nil)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
