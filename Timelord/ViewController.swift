@@ -22,7 +22,7 @@ final class ViewController: UITableViewController {
                 TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",
-                        cellViewModels: persistedReminders),
+                        cellViewModels: persistedReminders.map(Row.reminder)),
                 ])
             }
         
@@ -49,13 +49,15 @@ final class ViewController: UITableViewController {
     }
 }
 
-extension Reminder: TableCellViewModel {
+enum Row: TableCellViewModel {
+    case reminder(Reminder)
+    
     public var registrationInfo: ViewRegistrationInfo {
         return ViewRegistrationInfo(classType: ReminderCell.self)
     }
     
     public var accessibilityFormat: CellAccessibilityFormat {
-        return "ReminderCell"
+        return ""
     }
     
     public var rowHeight: CGFloat? {
@@ -63,10 +65,14 @@ extension Reminder: TableCellViewModel {
     }
     
     public func applyViewModelToCell(_ cell: UITableViewCell) {
-        guard
-            let cell = cell as? ReminderCell
-            else { return }
-        cell.model.value = self
+        switch self {
+        case .reminder(let reminder):
+            guard
+                let cell = cell as? ReminderCell
+                else { return }
+            cell.model.value = reminder
+        }
+       
     }
 }
 
