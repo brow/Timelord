@@ -11,6 +11,7 @@ final class ViewController: UITableViewController {
         super.init(style: .plain)
         
         tableView.rowHeight = ReminderCell.height
+        tableView.tableFooterView = UIView()
         tableView.register(
             ReminderCell.self,
             forCellReuseIdentifier: reminderCellIdentifier)
