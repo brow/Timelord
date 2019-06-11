@@ -1,6 +1,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import ReactiveLists
 import Core
 
 final class ViewController: UITableViewController {
@@ -12,49 +13,32 @@ final class ViewController: UITableViewController {
         
         tableView.rowHeight = ReminderCell.height
         tableView.tableFooterView = UIView()
-        tableView.register(
-            ReminderCell.self,
-            forCellReuseIdentifier: reminderCellIdentifier)
         
-//        let titleLabel = UILabel()
-//        titleLabel.font = .boldSystemFont(ofSize: 36)
-//        titleLabel.text = "Timelord"
-//
-//        let bodyLabel = UILabel()
-//        bodyLabel.font = .systemFont(ofSize: 17)
-//        bodyLabel.numberOfLines = 0
-//        bodyLabel.text = "Set timers without touching or unlocking your phone, using your voice."
-//
+        let tableViewModel = Property
+            .combineLatest(
+                persistedReminders,
+                notificationsAreEnabled)
+            .map { persistedReminders, notificationsAreEnabled in
+                TableViewModel(sectionModels: [
+                    TableSectionViewModel(
+                        diffingKey: "main",
+                        cellViewModels: persistedReminders),
+                ])
+            }
+        
+        let driver = TableViewDriver(
+            tableView: tableView,
+            tableViewModel: tableViewModel.value)
+        
+        tableViewModel
+            .producer
+            .take(during: reactive.lifetime)
+            .startWithValues { driver.tableViewModel = $0 }
+        
 //        let notificationsView = makeNotificationsView(
 //            enableNotifications: enableNotifications)
 //
 //        let instructionsView = makeInstructionsView()
-//
-//        let stackView = UIStackView(
-//            arrangedSubviews: [
-//                titleLabel,
-//                bodyLabel,
-//                notificationsView,
-//                instructionsView,
-//            ])
-//        stackView.axis = .vertical
-//        stackView.spacing = 20
-//        view.addSubview(stackView)
-//
-//        // Layout
-//
-//        let marginsGuide = view.layoutMarginsGuide
-//
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.topAnchor
-//            .constraint(equalTo: marginsGuide.topAnchor, constant: 20)
-//            .isActive = true
-//        stackView.leadingAnchor
-//            .constraint(equalTo: marginsGuide.leadingAnchor)
-//            .isActive = true
-//        stackView.trailingAnchor
-//            .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
-//            .isActive = true
 //
 //        notificationsView.reactive.isHidden <~ notificationsAreEnabled
 //        instructionsView.reactive.isHidden <~ notificationsAreEnabled.map(!)
@@ -63,35 +47,74 @@ final class ViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: UITableViewControllerDataSource
-    
-    override func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int)
-        -> Int
-    {
-        return 1
+}
+
+extension Reminder: TableCellViewModel {
+    public var registrationInfo: ViewRegistrationInfo {
+        return ViewRegistrationInfo(classType: ReminderCell.self)
     }
     
-    override func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-        -> UITableViewCell
-    {
-        let cell = tableView
-            .dequeueReusableCell(
-                withIdentifier: reminderCellIdentifier,
-                for: indexPath)
-            as! ReminderCell
-        cell.model.value = Reminder(
-            name: "Testing",
-            date: Date().addingTimeInterval(120))
-        return cell
+    public var accessibilityFormat: CellAccessibilityFormat {
+        return "ReminderCell"
+    }
+    
+    public var rowHeight: CGFloat? {
+        return ReminderCell.height
+    }
+    
+    public func applyViewModelToCell(_ cell: UITableViewCell) {
+        guard
+            let cell = cell as? ReminderCell
+            else { return }
+        cell.model.value = self
     }
 }
 
-private let reminderCellIdentifier = "ReminderCell"
+final class HeaderCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        let titleLabel = UILabel()
+        titleLabel.font = .boldSystemFont(ofSize: 36)
+        titleLabel.text = "Timelord"
+        
+        let bodyLabel = UILabel()
+        bodyLabel.font = .systemFont(ofSize: 17)
+        bodyLabel.numberOfLines = 0
+        bodyLabel.text = "Set timers without touching or unlocking your phone, using your voice."
+        
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                titleLabel,
+                bodyLabel,
+            ])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        contentView.addSubview(stackView)
+        
+        // Layout
+        
+        let marginsGuide = contentView.layoutMarginsGuide
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor
+            .constraint(equalTo: marginsGuide.topAnchor)
+            .isActive = true
+        stackView.bottomAnchor
+            .constraint(equalTo: marginsGuide.bottomAnchor)
+            .isActive = true
+        stackView.leadingAnchor
+            .constraint(equalTo: marginsGuide.leadingAnchor)
+            .isActive = true
+        stackView.trailingAnchor
+            .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
+            .isActive = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 //private func makeInstructionsView() -> UIView {
 //    let header = UILabel()

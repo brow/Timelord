@@ -23,6 +23,8 @@
 		EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */; };
 		EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
 		EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
+		EAB04C3A22B02D1400143536 /* ReactiveLists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB04C3922B02D1400143536 /* ReactiveLists.framework */; };
+		EAB04C3C22B02E8D00143536 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */; };
 		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */; };
 		EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */; };
@@ -117,6 +119,8 @@
 		EA88EBE921F50F7D00D045C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA88EBEC21F50F7D00D045C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA88EBEE21F50F7D00D045C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB04C3922B02D1400143536 /* ReactiveLists.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveLists.framework; path = Carthage/Build/iOS/ReactiveLists.framework; sourceTree = "<group>"; };
+		EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DifferenceKit.framework; path = Carthage/Build/iOS/DifferenceKit.framework; sourceTree = "<group>"; };
 		EAD5B36921F6526700C1F107 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB04C3C22B02E8D00143536 /* DifferenceKit.framework in Frameworks */,
+				EAB04C3A22B02D1400143536 /* ReactiveLists.framework in Frameworks */,
 				EAEC0AA8220374010056740B /* ReactiveSwift.framework in Frameworks */,
 				EAFEAA2721F697BC00B487FC /* Core.framework in Frameworks */,
 			);
@@ -195,6 +201,8 @@
 		EA0EE33421F518CE0030A35C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */,
+				EAB04C3922B02D1400143536 /* ReactiveLists.framework */,
 				EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */,
 				EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */,
 				EAD5B36921F6526700C1F107 /* Result.framework */,
@@ -506,12 +514,16 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveLists.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DifferenceKit.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveLists.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DifferenceKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
