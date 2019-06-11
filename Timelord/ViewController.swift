@@ -100,7 +100,7 @@ private func makeInstructionsView() -> UIView {
         suggestion("Show Timelord reminders"),
         ])
     stackView.axis = .vertical
-    stackView.spacing = 14
+    stackView.spacing = 16
     stackView.alignment = .leading
     return stackView
 }
@@ -109,10 +109,15 @@ private func makeNotificationsView(
     enableNotifications: @escaping () -> ())
     -> UIView
 {
+    let header = UILabel()
+    header.font = .boldSystemFont(ofSize: 19)
+    header.numberOfLines = 0
+    header.text = "Get started"
+    
     let notificationsLabel = UILabel()
     notificationsLabel.font = .systemFont(ofSize: 17)
     notificationsLabel.numberOfLines = 0
-    notificationsLabel.text = "To get started, allow the app to sound an alarm when one of your timers finishes:"
+    notificationsLabel.text = "Allow the app to sound an alarm when one of your timers finishes:"
     
     let notificationsButton = RoundedRectButton()
     notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
@@ -122,11 +127,13 @@ private func makeNotificationsView(
     
     let stackView = UIStackView(
         arrangedSubviews: [
+            header,
             notificationsLabel,
             notificationsButton,
         ])
     stackView.axis = .vertical
-    stackView.spacing = 20
+    stackView.spacing = 14
+    stackView.setCustomSpacing(20, after: notificationsLabel)
     stackView.alignment = .leading
     
     // Bindings
