@@ -101,6 +101,7 @@ private func makeInstructionsView() -> UIView {
         ])
     stackView.axis = .vertical
     stackView.spacing = 14
+    stackView.alignment = .leading
     return stackView
 }
 
