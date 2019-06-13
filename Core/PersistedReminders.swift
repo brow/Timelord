@@ -1,8 +1,8 @@
 import ReactiveSwift
 import UserNotifications
 
-public let persistedReminders: MutableProperty<[Reminder]> = {
-    let reminders = MutableProperty<[Reminder]>(
+public let persistedReminders: MutableProperty<Set<Reminder>> = {
+    let reminders = MutableProperty<Set<Reminder>>(
         userDefaults: sharedDefaults,
         key: "Reminders",
         defaultValue: [])
@@ -40,7 +40,7 @@ public let persistedReminders: MutableProperty<[Reminder]> = {
                             content.sound = UNNotificationSound(
                                 named: .init("ring.wav"))
                             return content
-                    }(),
+                        }(),
                         trigger: UNCalendarNotificationTrigger(
                             dateMatching: dateComponents,
                             repeats: false)))

@@ -116,9 +116,7 @@ enum Row: TableCellViewModel {
         case .header:
             return nil
         case .reminder(let reminder):
-            return { _ in
-                persistedReminders.value.removeAll { $0.id == reminder.id }
-            }
+            return { _ in persistedReminders.value.remove(reminder) }
         }
     }
 }

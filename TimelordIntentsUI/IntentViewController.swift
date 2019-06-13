@@ -16,7 +16,9 @@ final class IntentViewController: UITableViewController,
     {
         let configuredParameters: Set<INParameter>
         if interaction.intentResponse is INSearchForNotebookItemsIntentResponse {
-            reminders = parameters.isEmpty ? [] : persistedReminders.value
+            reminders = parameters.isEmpty
+                ? []
+                : persistedReminders.value.sorted { $0.date < $1.date }
             configuredParameters = Set(reminders.indices.compactMap { index in
                 INParameter(
                     for: INSearchForNotebookItemsIntentResponse.self,

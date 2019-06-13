@@ -57,8 +57,7 @@ class IntentHandler: INExtension,
                     name: title.spokenPhrase,
                     date: startDate)
             }
-            persistedReminders.value.append(
-                contentsOf: addedReminders)
+            persistedReminders.value.formUnion(addedReminders)
             response.addedTasks = addedReminders.map { reminder in
                 INTask(
                     title: INSpeakableString(spokenPhrase: reminder.name),
