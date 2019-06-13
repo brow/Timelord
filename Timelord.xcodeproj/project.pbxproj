@@ -12,6 +12,7 @@
 		EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EE33821F518CE0030A35C /* IntentViewController.swift */; };
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2096C522B27D370045A25A /* HeaderCell.swift */; };
 		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
 		EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */; };
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
@@ -107,6 +108,7 @@
 		EA0EE33521F518CE0030A35C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		EA0EE33821F518CE0030A35C /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		EA0EE33D21F518CE0030A35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2096C522B27D370045A25A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				EA0EE32521F5167E0030A35C /* Timelord.entitlements */,
 				EA88EBEE21F50F7D00D045C6 /* Info.plist */,
 				EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */,
+				EA2096C522B27D370045A25A /* HeaderCell.swift */,
 				EAEC0AAF220385630056740B /* RoundedRectButton.swift */,
 				EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */,
 				EA88EBE421F50F7C00D045C6 /* ViewController.swift */,
@@ -561,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */,
+				EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */,
 				EAEC0AB0220385630056740B /* RoundedRectButton.swift in Sources */,
 				EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */,
 				EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */,
