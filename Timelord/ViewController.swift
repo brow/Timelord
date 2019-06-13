@@ -22,7 +22,11 @@ final class ViewController: UITableViewController {
                 var rows = [Row.header]
                 rows.append(
                     contentsOf: persistedReminders.map(Row.reminder))
-                rows.append(.instructions)
+                rows.append(
+                    notificationsAreEnabled
+                        ? .instructions
+                        : .notifications(
+                            enable: enableNotifications))
                 return TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",
@@ -34,19 +38,12 @@ final class ViewController: UITableViewController {
             tableView: tableView,
             tableViewModel: tableViewModel.value)
         driver.deletionAnimation = .left
+        driver.insertionAnimation = .right
         
         tableViewModel
             .producer
             .take(during: reactive.lifetime)
             .startWithValues { driver.tableViewModel = $0 }
-        
-//        let notificationsView = makeNotificationsView(
-//            enableNotifications: enableNotifications)
-//
-//        let instructionsView = makeInstructionsView()
-//
-//        notificationsView.reactive.isHidden <~ notificationsAreEnabled
-//        instructionsView.reactive.isHidden <~ notificationsAreEnabled.map(!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,7 +54,7 @@ final class ViewController: UITableViewController {
 enum Row: TableCellViewModel {
     case header
     case instructions
-    case notifications
+    case notifications(enable: () -> ())
     case reminder(Reminder)
     
     var diffingKey: DiffingKey {
@@ -103,8 +100,13 @@ enum Row: TableCellViewModel {
     
     public func applyViewModelToCell(_ cell: UITableViewCell) {
         switch self {
-        case .header, .instructions, .notifications:
+        case .header, .instructions:
             break
+        case .notifications(let enable):
+            guard
+                let cell = cell as? NotificationsCell
+                else { return }
+            cell.enableNotifications = enable
         case .reminder(let reminder):
             guard
                 let cell = cell as? ReminderCell
