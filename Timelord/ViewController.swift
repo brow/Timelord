@@ -32,6 +32,7 @@ final class ViewController: UITableViewController {
         let driver = TableViewDriver(
             tableView: tableView,
             tableViewModel: tableViewModel.value)
+        driver.deletionAnimation = .left
         
         tableViewModel
             .producer
@@ -55,6 +56,15 @@ final class ViewController: UITableViewController {
 enum Row: TableCellViewModel {
     case header
     case reminder(Reminder)
+    
+    var diffingKey: DiffingKey {
+        switch self {
+        case .header:
+            return ""
+        case .reminder(let reminder):
+            return reminder.id.uuidString
+        }
+    }
     
     public var registrationInfo: ViewRegistrationInfo {
         return ViewRegistrationInfo(classType: {
@@ -106,7 +116,9 @@ enum Row: TableCellViewModel {
         case .header:
             return nil
         case .reminder(let reminder):
-            return { _ in print("delete", reminder) }
+            return { _ in
+                persistedReminders.value.removeAll { $0.id == reminder.id }
+            }
         }
     }
 }
