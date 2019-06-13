@@ -57,7 +57,7 @@ class IntentHandler: INExtension,
                     name: title.spokenPhrase,
                     date: startDate)
             }
-            persistedReminders.value.formUnion(addedReminders)
+            PersistedReminders.add(reminders: addedReminders)
             response.addedTasks = addedReminders.map { reminder in
                 INTask(
                     title: INSpeakableString(spokenPhrase: reminder.name),
@@ -87,7 +87,7 @@ class IntentHandler: INExtension,
             let calendar = Calendar.current
             response.sortType = .asIs
             
-            response.tasks = persistedReminders.value
+            response.tasks = PersistedReminders.sortedReminders.value
                 .map { reminder in
                     INTask(
                         title: INSpeakableString(spokenPhrase: reminder.name),

@@ -18,7 +18,7 @@ final class IntentViewController: UITableViewController,
         if interaction.intentResponse is INSearchForNotebookItemsIntentResponse {
             reminders = parameters.isEmpty
                 ? []
-                : persistedReminders.value.sorted { $0.date < $1.date }
+                : PersistedReminders.sortedReminders.value
             configuredParameters = Set(reminders.indices.compactMap { index in
                 INParameter(
                     for: INSearchForNotebookItemsIntentResponse.self,
@@ -28,7 +28,7 @@ final class IntentViewController: UITableViewController,
         } else {
             reminders = parameters.isEmpty
                 ? []
-                : persistedReminders.value.suffix(1)
+                : PersistedReminders.sortedReminders.value.suffix(1) // FIXME
             configuredParameters = parameters
         }
         

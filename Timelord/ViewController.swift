@@ -16,7 +16,7 @@ final class ViewController: UITableViewController {
         
         let tableViewModel = Property
             .combineLatest(
-                persistedReminders,
+                PersistedReminders.sortedReminders,
                 notificationsAreEnabled)
             .map { persistedReminders, notificationsAreEnabled -> TableViewModel in
                 var rows = [Row.header]
@@ -116,7 +116,7 @@ enum Row: TableCellViewModel {
         case .header:
             return nil
         case .reminder(let reminder):
-            return { _ in persistedReminders.value.remove(reminder) }
+            return { _ in PersistedReminders.removeReminder(id: reminder.id) }
         }
     }
 }

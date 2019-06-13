@@ -1,7 +1,25 @@
 import ReactiveSwift
 import UserNotifications
 
-public let persistedReminders: MutableProperty<Set<Reminder>> = {
+public struct PersistedReminders {
+    public static func add<S: Sequence>(reminders: S) where S.Element == Reminder {
+        persistedReminders.value.formUnion(reminders)
+    }
+    
+    public static func removeReminder(id: UUID) {
+        persistedReminders.modify { persistedReminders in
+            persistedReminders = persistedReminders.filter { $0.id == id }
+        }
+    }
+    
+    public static var sortedReminders: Property<[Reminder]> {
+        return persistedReminders
+            .skipRepeats()
+            .map { $0.sorted { $0.date < $1.date } }
+    }
+}
+
+private let persistedReminders: MutableProperty<Set<Reminder>> = {
     let reminders = MutableProperty<Set<Reminder>>(
         userDefaults: sharedDefaults,
         key: "Reminders",
@@ -49,8 +67,6 @@ public let persistedReminders: MutableProperty<Set<Reminder>> = {
     
     return reminders
 }()
-
-
 
 private let userNotificationCenter = UNUserNotificationCenter.current()
 
