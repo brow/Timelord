@@ -8,7 +8,7 @@ public struct PersistedReminders {
     
     public static func removeReminder(id: UUID) {
         persistedReminders.modify { persistedReminders in
-            persistedReminders = persistedReminders.filter { $0.id == id }
+            persistedReminders = persistedReminders.filter { $0.id != id }
         }
     }
     
