@@ -30,12 +30,14 @@ final class HeaderCell: UITableViewCell {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor
-            .constraint(equalTo: marginsGuide.topAnchor)
+            .constraint(
+                equalTo: marginsGuide.topAnchor,
+                constant: 2)
             .isActive = true
         stackView.bottomAnchor
             .constraint(
                 equalTo: marginsGuide.bottomAnchor,
-                constant: -10)
+                constant: -12)
             .isActive = true
         stackView.leadingAnchor
             .constraint(equalTo: marginsGuide.leadingAnchor)
