@@ -12,5 +12,16 @@ public struct Reminder: Hashable, Codable {
         self.name = name
         self.date = date
     }
+    
+    // MARK: Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        id.hash(into: &hasher)
+    }
+    
+    // MARK: Equatable
+    
+    public static func ==(lhs: Reminder, rhs: Reminder) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
-
