@@ -91,6 +91,24 @@ enum Row: TableCellViewModel {
             cell.model.value = reminder
         }
     }
+    
+    var editingStyle: UITableViewCell.EditingStyle {
+        switch self {
+        case .header:
+            return .none
+        case .reminder:
+            return .delete
+        }
+    }
+    
+    var commitEditingStyle: CommitEditingStyleClosure? {
+        switch self {
+        case .header:
+            return nil
+        case .reminder(let reminder):
+            return { _ in print("delete", reminder) }
+        }
+    }
 }
 
 //private func makeInstructionsView() -> UIView {
