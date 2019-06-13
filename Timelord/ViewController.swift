@@ -14,12 +14,18 @@ final class ViewController: UITableViewController {
         tableView.rowHeight = ReminderCell.height
         tableView.tableFooterView = UIView()
         
+        let sortedReminders = PersistedReminders.sortedReminders
+        
+        let hasReminders = sortedReminders
+            .map { !$0.isEmpty }
+            .skipRepeats()
+        
         let tableViewModel = Property
             .combineLatest(
-                PersistedReminders.sortedReminders,
+                sortedReminders,
                 notificationsAreEnabled)
             .map { persistedReminders, notificationsAreEnabled -> TableViewModel in
-                var rows = [Row.header]
+                var rows = [Row.header(showsSeparator: hasReminders)]
                 rows.append(
                     contentsOf: persistedReminders.map(Row.reminder))
                 rows.append(
@@ -52,7 +58,7 @@ final class ViewController: UITableViewController {
 }
 
 enum Row: TableCellViewModel {
-    case header
+    case header(showsSeparator: Property<Bool>)
     case instructions
     case notifications(enable: () -> ())
     case reminder(Reminder)
@@ -100,8 +106,13 @@ enum Row: TableCellViewModel {
     
     public func applyViewModelToCell(_ cell: UITableViewCell) {
         switch self {
-        case .header, .instructions:
+        case .instructions:
             break
+        case .header(let showsSeparator):
+            guard
+                let cell = cell as? HeaderCell
+                else { return }
+            cell.showsSeparator.value = showsSeparator
         case .notifications(let enable):
             guard
                 let cell = cell as? NotificationsCell

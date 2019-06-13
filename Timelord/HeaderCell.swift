@@ -1,11 +1,13 @@
 import UIKit
+import ReactiveSwift
 
 final class HeaderCell: UITableViewCell {
+    var showsSeparator = MutableProperty<Property<Bool>?>(nil)
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        separatorInset.left = .greatestFiniteMagnitude
         
         let titleLabel = UILabel()
         titleLabel.font = .boldSystemFont(ofSize: 36)
@@ -46,6 +48,19 @@ final class HeaderCell: UITableViewCell {
         stackView.trailingAnchor
             .constraint(equalTo: marginsGuide.trailingAnchor)
             .isActive = true
+        
+        // Bindings
+        
+        let defaultLeftSeparatorInset = separatorInset.left
+        showsSeparator
+            .flatMap(.latest) { $0 ?? .init(value: false) }
+            .skipRepeats()
+            .producer
+            .startWithValues { [weak self] showsSeparator in
+                self?.separatorInset.left = showsSeparator
+                    ? defaultLeftSeparatorInset
+                    : .greatestFiniteMagnitude
+            }
     }
     
     required init?(coder aDecoder: NSCoder) {
