@@ -12,6 +12,7 @@ public final class ReminderCell: UITableViewCell {
             style: .value1,
             reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         backgroundColor = .clear
         
         let textLabel = UILabel()

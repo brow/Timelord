@@ -14,9 +14,6 @@ final class ViewController: UITableViewController {
         tableView.rowHeight = ReminderCell.height
         tableView.tableFooterView = UIView()
         
-        
-
-        
         let tableViewModel = Property
             .combineLatest(
                 persistedReminders,
@@ -99,6 +96,8 @@ enum Row: TableCellViewModel {
 final class HeaderCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
         
         let titleLabel = UILabel()
         titleLabel.font = .boldSystemFont(ofSize: 36)
