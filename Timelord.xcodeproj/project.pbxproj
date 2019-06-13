@@ -286,12 +286,12 @@
 				EAFEAA2221F697BC00B487FC /* Core.h */,
 				EAFEAA2321F697BC00B487FC /* Info.plist */,
 				EAEC0AAD220381150056740B /* Colors.swift */,
+				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
 				EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */,
 				EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */,
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
 				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
-				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
