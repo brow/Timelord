@@ -45,8 +45,6 @@ class IntentHandler: INExtension,
                 code: .success,
                 userActivity: nil)
             
-            removeCompletedReminders()
-            
             let addedReminders = taskTitles.compactMap { title -> Reminder? in
                 guard
                     let startDateComponents = temporalEventTrigger
@@ -90,8 +88,6 @@ class IntentHandler: INExtension,
             let calendar = Calendar.current
             response.sortType = .asIs
             
-            removeCompletedReminders()
-            
             response.tasks = persistedReminders.value
                 .map { reminder in
                     INTask(
@@ -127,11 +123,4 @@ private func startDate(components: DateComponents) -> Date? {
     components.nanosecond = currentDateComponents.nanosecond
     
     return calendar.date(from: components)
-}
-
-private func removeCompletedReminders() {
-    let now = Date()
-    persistedReminders.modify { reminders in
-        reminders.removeAll { $0.date < now }
-    }
 }
