@@ -26,9 +26,14 @@ final class IntentViewController: UITableViewController,
 
             })
         } else {
-            reminders = parameters.isEmpty
-                ? []
-                : PersistedReminders.sortedReminders.value.suffix(1) // FIXME
+            let taskIDs = Set(parameters
+                .compactMap(interaction.parameterValue)
+                .compactMap { $0 as? INTask }
+                .compactMap { $0.identifier }
+                .compactMap(UUID.init))
+            reminders = PersistedReminders.sortedReminders
+                .value
+                .filter { taskIDs.contains($0.id) }
             configuredParameters = parameters
         }
         

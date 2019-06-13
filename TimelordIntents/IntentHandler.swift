@@ -67,7 +67,7 @@ class IntentHandler: INExtension,
                     temporalEventTrigger: nil,
                     createdDateComponents: nil,
                     modifiedDateComponents: nil,
-                    identifier: nil)
+                    identifier: reminder.id.uuidString)
             }
             return response
         }())
@@ -104,7 +104,7 @@ class IntentHandler: INExtension,
                                 from: now.addingTimeInterval(86400))),
                         createdDateComponents: nil,
                         modifiedDateComponents: nil,
-                        identifier: nil)
+                        identifier: reminder.id.uuidString)
                 }
             return response
         }())
