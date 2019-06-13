@@ -1,21 +1,23 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import Core
 
-final class ReminderCell: UITableViewCell {
-    let model = MutableProperty<Reminder?>(nil)
+public final class ReminderCell: UITableViewCell {
+    public static let height: CGFloat = 60
+    
+    public let model = MutableProperty<Reminder?>(nil)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(
             style: .value1,
             reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         backgroundColor = .clear
         
         let textLabel = UILabel()
         textLabel.numberOfLines = 2
-        textLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 19)
         contentView.addSubview(textLabel)
         
         let detailTextLabel = UILabel()

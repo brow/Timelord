@@ -16,7 +16,9 @@ final class IntentViewController: UITableViewController,
     {
         let configuredParameters: Set<INParameter>
         if interaction.intentResponse is INSearchForNotebookItemsIntentResponse {
-            reminders = parameters.isEmpty ? [] : persistedReminders.value
+            reminders = parameters.isEmpty
+                ? []
+                : PersistedReminders.sortedReminders.value
             configuredParameters = Set(reminders.indices.compactMap { index in
                 INParameter(
                     for: INSearchForNotebookItemsIntentResponse.self,
@@ -26,7 +28,7 @@ final class IntentViewController: UITableViewController,
         } else {
             reminders = parameters.isEmpty
                 ? []
-                : persistedReminders.value.suffix(1)
+                : PersistedReminders.sortedReminders.value.suffix(1) // FIXME
             configuredParameters = parameters
         }
         
@@ -76,7 +78,7 @@ final class IntentViewController: UITableViewController,
     override func loadView() {
         super.loadView()
         
-        tableView.rowHeight = 60
+        tableView.rowHeight = ReminderCell.height
         tableView.backgroundColor = .clear
         tableView.separatorColor = .gray
         tableView.register(

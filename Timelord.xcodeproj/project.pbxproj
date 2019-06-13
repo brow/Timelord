@@ -12,19 +12,24 @@
 		EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EE33821F518CE0030A35C /* IntentViewController.swift */; };
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2096C522B27D370045A25A /* HeaderCell.swift */; };
 		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
 		EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */; };
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
+		EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */; };
+		EA6804F722B2AD4F006C02A1 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */; };
 		EA807503228C87E5006B4943 /* ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = EAEC0AB1220390E30056740B /* ring.wav */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
 		EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBE921F50F7D00D045C6 /* Assets.xcassets */; };
 		EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */; };
+		EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
+		EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
+		EAB04C3A22B02D1400143536 /* ReactiveLists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB04C3922B02D1400143536 /* ReactiveLists.framework */; };
+		EAB04C3C22B02E8D00143536 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */; };
 		EAD5B36C21F6526700C1F107 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
-		EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */; };
 		EAD5B37421F6628A00C1F107 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */; };
-		EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */; };
 		EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */; };
 		EAEC0AA8220374010056740B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */; };
@@ -105,18 +110,23 @@
 		EA0EE33521F518CE0030A35C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		EA0EE33821F518CE0030A35C /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		EA0EE33D21F518CE0030A35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2096C522B27D370045A25A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutablePropertyPersistence.swift; sourceTree = "<group>"; };
 		EA58059A228B268D00B51567 /* TimelordIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntents.entitlements; sourceTree = "<group>"; };
 		EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntentsUI.entitlements; sourceTree = "<group>"; };
+		EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsCell.swift; sourceTree = "<group>"; };
+		EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EA88EBE921F50F7D00D045C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA88EBEC21F50F7D00D045C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA88EBEE21F50F7D00D045C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB04C3922B02D1400143536 /* ReactiveLists.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveLists.framework; path = Carthage/Build/iOS/ReactiveLists.framework; sourceTree = "<group>"; };
+		EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DifferenceKit.framework; path = Carthage/Build/iOS/DifferenceKit.framework; sourceTree = "<group>"; };
 		EAD5B36921F6526700C1F107 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
@@ -166,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB04C3C22B02E8D00143536 /* DifferenceKit.framework in Frameworks */,
+				EAB04C3A22B02D1400143536 /* ReactiveLists.framework in Frameworks */,
 				EAEC0AA8220374010056740B /* ReactiveSwift.framework in Frameworks */,
 				EAFEAA2721F697BC00B487FC /* Core.framework in Frameworks */,
 			);
@@ -195,6 +207,8 @@
 		EA0EE33421F518CE0030A35C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAB04C3B22B02E8C00143536 /* DifferenceKit.framework */,
+				EAB04C3922B02D1400143536 /* ReactiveLists.framework */,
 				EAD5B37321F6628A00C1F107 /* ReactiveCocoa.framework */,
 				EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */,
 				EAD5B36921F6526700C1F107 /* Result.framework */,
@@ -209,8 +223,6 @@
 				EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */,
 				EA0EE33D21F518CE0030A35C /* Info.plist */,
 				EA0EE33821F518CE0030A35C /* IntentViewController.swift */,
-				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
-				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = TimelordIntentsUI;
 			sourceTree = "<group>";
@@ -255,6 +267,9 @@
 				EA0EE32521F5167E0030A35C /* Timelord.entitlements */,
 				EA88EBEE21F50F7D00D045C6 /* Info.plist */,
 				EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */,
+				EA2096C522B27D370045A25A /* HeaderCell.swift */,
+				EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */,
+				EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */,
 				EAEC0AAF220385630056740B /* RoundedRectButton.swift */,
 				EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */,
 				EA88EBE421F50F7C00D045C6 /* ViewController.swift */,
@@ -275,6 +290,8 @@
 				EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */,
 				EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */,
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
+				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
+				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -506,12 +523,16 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveLists.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DifferenceKit.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveLists.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DifferenceKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -533,8 +554,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0EE33921F518CE0030A35C /* IntentViewController.swift in Sources */,
-				EAD5B37021F65E4A00C1F107 /* ReminderCell.swift in Sources */,
-				EAD663B621FCF6A600130E3E /* FormatTimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,8 +570,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC0AAA220376F00056740B /* UIApplicationExtensions.swift in Sources */,
+				EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */,
 				EAEC0AB0220385630056740B /* RoundedRectButton.swift in Sources */,
 				EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */,
+				EA6804F722B2AD4F006C02A1 /* NotificationsCell.swift in Sources */,
+				EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */,
 				EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,10 +584,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */,
+				EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */,
 				EAEC0AAE220381150056740B /* Colors.swift in Sources */,
 				EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */,
 				EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */,
 				EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */,
+				EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

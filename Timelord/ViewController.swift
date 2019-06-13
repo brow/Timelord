@@ -1,58 +1,55 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import ReactiveLists
+import Core
 
-final class ViewController: UIViewController {
+final class ViewController: UITableViewController {
     init(
         notificationsAreEnabled: Property<Bool>,
         enableNotifications: @escaping () -> ())
     {
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .plain)
         
-        view.backgroundColor = .white
+        tableView.rowHeight = ReminderCell.height
+        tableView.tableFooterView = UIView()
         
-        let titleLabel = UILabel()
-        titleLabel.font = .boldSystemFont(ofSize: 36)
-        titleLabel.text = "Timelord"
+        let sortedReminders = PersistedReminders.sortedReminders
         
-        let bodyLabel = UILabel()
-        bodyLabel.font = .systemFont(ofSize: 17)
-        bodyLabel.numberOfLines = 0
-        bodyLabel.text = "Set timers without touching or unlocking your phone, using your voice."
+        let hasReminders = sortedReminders
+            .map { !$0.isEmpty }
+            .skipRepeats()
         
-        let notificationsView = makeNotificationsView(
-            enableNotifications: enableNotifications)
+        let tableViewModel = Property
+            .combineLatest(
+                sortedReminders,
+                notificationsAreEnabled)
+            .map { persistedReminders, notificationsAreEnabled -> TableViewModel in
+                var rows = [Row.header(showsSeparator: hasReminders)]
+                rows.append(
+                    contentsOf: persistedReminders.map(Row.reminder))
+                rows.append(
+                    notificationsAreEnabled
+                        ? .instructions
+                        : .notifications(
+                            enable: enableNotifications))
+                return TableViewModel(sectionModels: [
+                    TableSectionViewModel(
+                        diffingKey: "main",
+                        cellViewModels: rows),
+                ])
+            }
         
-        let instructionsView = makeInstructionsView()
+        let driver = TableViewDriver(
+            tableView: tableView,
+            tableViewModel: tableViewModel.value)
+        driver.deletionAnimation = .left
+        driver.insertionAnimation = .right
         
-        let stackView = UIStackView(
-            arrangedSubviews: [
-                titleLabel,
-                bodyLabel,
-                notificationsView,
-                instructionsView,
-            ])
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        view.addSubview(stackView)
-        
-        // Layout
-        
-        let marginsGuide = view.layoutMarginsGuide
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor
-            .constraint(equalTo: marginsGuide.topAnchor, constant: 20)
-            .isActive = true
-        stackView.leadingAnchor
-            .constraint(equalTo: marginsGuide.leadingAnchor)
-            .isActive = true
-        stackView.trailingAnchor
-            .constraint(lessThanOrEqualTo: marginsGuide.trailingAnchor)
-            .isActive = true
-        
-        notificationsView.reactive.isHidden <~ notificationsAreEnabled
-        instructionsView.reactive.isHidden <~ notificationsAreEnabled.map(!)
+        tableViewModel
+            .producer
+            .take(during: reactive.lifetime)
+            .startWithValues { driver.tableViewModel = $0 }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,88 +57,90 @@ final class ViewController: UIViewController {
     }
 }
 
-private func makeInstructionsView() -> UIView {
-    let header = UILabel()
-    header.font = .boldSystemFont(ofSize: 19)
-    header.numberOfLines = 0
-    header.text = "You can ask Siri…"
+enum Row: TableCellViewModel {
+    case header(showsSeparator: Property<Bool>)
+    case instructions
+    case notifications(enable: () -> ())
+    case reminder(Reminder)
     
-    func suggestion(_ text: String) -> UIView {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 17)
-        label.textColor = .white
-        label.numberOfLines = 0
-        label.text = "\"\(text)\""
-        
-        let container = UIView()
-        container.backgroundColor = .brand
-        container.layer.cornerRadius = 12
-        container.addSubview(label)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.leadingAnchor
-            .constraint(equalTo: container.leadingAnchor, constant: 14)
-            .isActive = true
-        label.trailingAnchor
-            .constraint(equalTo: container.trailingAnchor, constant: -14)
-            .isActive = true
-        label.topAnchor
-            .constraint(equalTo: container.topAnchor, constant: 10)
-            .isActive = true
-        label.bottomAnchor
-            .constraint(equalTo: container.bottomAnchor, constant: -10)
-            .isActive = true
-        return container
+    var diffingKey: DiffingKey {
+        switch self {
+        case .header:
+            return "header"
+        case .instructions:
+            return "instructions"
+        case .notifications:
+            return "notifications"
+        case .reminder(let reminder):
+            return reminder.id.uuidString
+        }
     }
-        
-    let stackView = UIStackView(arrangedSubviews: [
-        header,
-        suggestion("In Timelord remind me in 20 minutes to take yams out"),
-        suggestion("Show Timelord reminders"),
-        ])
-    stackView.axis = .vertical
-    stackView.spacing = 16
-    stackView.alignment = .leading
-    return stackView
-}
-
-private func makeNotificationsView(
-    enableNotifications: @escaping () -> ())
-    -> UIView
-{
-    let header = UILabel()
-    header.font = .boldSystemFont(ofSize: 19)
-    header.numberOfLines = 0
-    header.text = "Get started"
     
-    let notificationsLabel = UILabel()
-    notificationsLabel.font = .systemFont(ofSize: 17)
-    notificationsLabel.numberOfLines = 0
-    notificationsLabel.text = "Allow the app to sound an alarm when one of your timers finishes:"
+    public var registrationInfo: ViewRegistrationInfo {
+        return ViewRegistrationInfo(classType: {
+            switch self {
+            case .header:
+                return HeaderCell.self
+            case .instructions:
+                return InstructionsCell.self
+            case .notifications:
+                return NotificationsCell.self
+            case .reminder:
+                return ReminderCell.self
+            }
+        }())
+    }
     
-    let notificationsButton = RoundedRectButton()
-    notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
-    notificationsButton.setTitle(
-        "Allow Notifications",
-        for: .normal)
+    public var accessibilityFormat: CellAccessibilityFormat {
+        return ""
+    }
     
-    let stackView = UIStackView(
-        arrangedSubviews: [
-            header,
-            notificationsLabel,
-            notificationsButton,
-        ])
-    stackView.axis = .vertical
-    stackView.spacing = 14
-    stackView.setCustomSpacing(20, after: notificationsLabel)
-    stackView.alignment = .leading
+    public var rowHeight: CGFloat? {
+        switch self {
+        case .header, .instructions, .notifications:
+            return UITableView.automaticDimension
+        case .reminder:
+            return ReminderCell.height
+        }
+    }
     
-    // Bindings
+    public func applyViewModelToCell(_ cell: UITableViewCell) {
+        switch self {
+        case .instructions:
+            break
+        case .header(let showsSeparator):
+            guard
+                let cell = cell as? HeaderCell
+                else { return }
+            cell.showsSeparator.value = showsSeparator
+        case .notifications(let enable):
+            guard
+                let cell = cell as? NotificationsCell
+                else { return }
+            cell.enableNotifications = enable
+        case .reminder(let reminder):
+            guard
+                let cell = cell as? ReminderCell
+                else { return }
+            cell.model.value = reminder
+        }
+    }
     
-    notificationsButton.reactive
-        .controlEvents(.touchUpInside)
-        .map { _ in }
-        .observeValues(enableNotifications)
+    var editingStyle: UITableViewCell.EditingStyle {
+        switch self {
+        case .header, .instructions, .notifications:
+            return .none
+        case .reminder:
+            return .delete
+        }
+    }
     
-    return stackView
+    var commitEditingStyle: CommitEditingStyleClosure? {
+        switch self {
+        case .header, .instructions, .notifications:
+            return nil
+        case .reminder(let reminder):
+            return { _ in PersistedReminders.removeReminder(id: reminder.id) }
+        }
+    }
 }
