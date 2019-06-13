@@ -17,7 +17,7 @@ public final class ReminderCell: UITableViewCell {
         
         let textLabel = UILabel()
         textLabel.numberOfLines = 2
-        textLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 19)
         contentView.addSubview(textLabel)
         
         let detailTextLabel = UILabel()

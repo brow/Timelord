@@ -56,7 +56,7 @@ final class InstructionsCell: UITableViewCell {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor
-            .constraint(equalTo: marginsGuide.topAnchor, constant: 6)
+            .constraint(equalTo: marginsGuide.topAnchor, constant: 8)
             .isActive = true
         stackView.bottomAnchor
             .constraint(equalTo: marginsGuide.bottomAnchor)

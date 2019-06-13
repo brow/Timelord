@@ -22,7 +22,7 @@ final class ViewController: UITableViewController {
                 var rows = [Row.header]
                 rows.append(
                     contentsOf: persistedReminders.map(Row.reminder))
-                rows.append(.notifications)
+                rows.append(.instructions)
                 return TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",

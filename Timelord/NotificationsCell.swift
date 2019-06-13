@@ -12,7 +12,7 @@ final class NotificationsCell: UITableViewCell {
         let header = UILabel()
         header.font = .boldSystemFont(ofSize: 19)
         header.numberOfLines = 0
-        header.text = "Get started"
+        header.text = "To get started…"
         
         let notificationsLabel = UILabel()
         notificationsLabel.font = .systemFont(ofSize: 17)
@@ -43,7 +43,7 @@ final class NotificationsCell: UITableViewCell {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor
-            .constraint(equalTo: marginsGuide.topAnchor, constant: 6)
+            .constraint(equalTo: marginsGuide.topAnchor, constant: 8)
             .isActive = true
         stackView.bottomAnchor
             .constraint(equalTo: marginsGuide.bottomAnchor)

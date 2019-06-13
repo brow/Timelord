@@ -5,6 +5,7 @@ final class HeaderCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        separatorInset.left = .greatestFiniteMagnitude
         
         let titleLabel = UILabel()
         titleLabel.font = .boldSystemFont(ofSize: 36)
@@ -37,7 +38,7 @@ final class HeaderCell: UITableViewCell {
         stackView.bottomAnchor
             .constraint(
                 equalTo: marginsGuide.bottomAnchor,
-                constant: -12)
+                constant: -8)
             .isActive = true
         stackView.leadingAnchor
             .constraint(equalTo: marginsGuide.leadingAnchor)
