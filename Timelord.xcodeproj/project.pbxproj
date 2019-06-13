@@ -19,6 +19,7 @@
 		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */; };
 		EA6804F722B2AD4F006C02A1 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */; };
+		EA6804F922B2DC53006C02A1 /* INTaskExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F822B2DC53006C02A1 /* INTaskExtensions.swift */; };
 		EA807503228C87E5006B4943 /* ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = EAEC0AB1220390E30056740B /* ring.wav */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
@@ -119,6 +120,7 @@
 		EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntentsUI.entitlements; sourceTree = "<group>"; };
 		EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsCell.swift; sourceTree = "<group>"; };
 		EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
+		EA6804F822B2DC53006C02A1 /* INTaskExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INTaskExtensions.swift; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				EA58059A228B268D00B51567 /* TimelordIntents.entitlements */,
 				EA0EE32E21F518CE0030A35C /* Info.plist */,
+				EA6804F822B2DC53006C02A1 /* INTaskExtensions.swift */,
 				EA0EE32C21F518CE0030A35C /* IntentHandler.swift */,
 			);
 			path = TimelordIntents;
@@ -546,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0EE32D21F518CE0030A35C /* IntentHandler.swift in Sources */,
+				EA6804F922B2DC53006C02A1 /* INTaskExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

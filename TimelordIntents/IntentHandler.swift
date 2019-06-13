@@ -60,14 +60,8 @@ class IntentHandler: INExtension,
             PersistedReminders.add(reminders: addedReminders)
             response.addedTasks = addedReminders.map { reminder in
                 INTask(
-                    title: INSpeakableString(spokenPhrase: reminder.name),
-                    status: .notCompleted,
-                    taskType: .notCompletable,
-                    spatialEventTrigger: nil,
-                    temporalEventTrigger: nil,
-                    createdDateComponents: nil,
-                    modifiedDateComponents: nil,
-                    identifier: reminder.id.uuidString)
+                    reminder: reminder,
+                    temporalEventTrigger: nil)
             }
             return response
         }())
@@ -90,10 +84,7 @@ class IntentHandler: INExtension,
             response.tasks = PersistedReminders.sortedReminders.value
                 .map { reminder in
                     INTask(
-                        title: INSpeakableString(spokenPhrase: reminder.name),
-                        status: .notCompleted,
-                        taskType: .notCompletable,
-                        spatialEventTrigger: nil,
+                        reminder: reminder,
                         // If the trigger is less than a day in the future,
                         // Siri says "found 1 overdue reminder". By setting the
                         // trigger further out, we can make Siri say "found
@@ -101,10 +92,7 @@ class IntentHandler: INExtension,
                         temporalEventTrigger: INTemporalEventTrigger(
                             startDateComponents: calendar.dateComponents(
                                 in: .current,
-                                from: now.addingTimeInterval(86400))),
-                        createdDateComponents: nil,
-                        modifiedDateComponents: nil,
-                        identifier: reminder.id.uuidString)
+                                from: now.addingTimeInterval(86400))))
                 }
             return response
         }())
