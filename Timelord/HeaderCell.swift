@@ -35,7 +35,7 @@ final class HeaderCell: UITableViewCell {
         stackView.topAnchor
             .constraint(
                 equalTo: marginsGuide.topAnchor,
-                constant: 2)
+                constant: 20)
             .isActive = true
         stackView.bottomAnchor
             .constraint(
