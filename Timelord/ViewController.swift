@@ -22,7 +22,7 @@ final class ViewController: UITableViewController {
                 var rows = [Row.header]
                 rows.append(
                     contentsOf: persistedReminders.map(Row.reminder))
-                rows.append(.instructions)
+                rows.append(.notifications)
                 return TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",
@@ -57,6 +57,7 @@ final class ViewController: UITableViewController {
 enum Row: TableCellViewModel {
     case header
     case instructions
+    case notifications
     case reminder(Reminder)
     
     var diffingKey: DiffingKey {
@@ -65,6 +66,8 @@ enum Row: TableCellViewModel {
             return "header"
         case .instructions:
             return "instructions"
+        case .notifications:
+            return "notifications"
         case .reminder(let reminder):
             return reminder.id.uuidString
         }
@@ -77,6 +80,8 @@ enum Row: TableCellViewModel {
                 return HeaderCell.self
             case .instructions:
                 return InstructionsCell.self
+            case .notifications:
+                return NotificationsCell.self
             case .reminder:
                 return ReminderCell.self
             }
@@ -89,7 +94,7 @@ enum Row: TableCellViewModel {
     
     public var rowHeight: CGFloat? {
         switch self {
-        case .header, .instructions:
+        case .header, .instructions, .notifications:
             return UITableView.automaticDimension
         case .reminder:
             return ReminderCell.height
@@ -98,7 +103,7 @@ enum Row: TableCellViewModel {
     
     public func applyViewModelToCell(_ cell: UITableViewCell) {
         switch self {
-        case .header, .instructions:
+        case .header, .instructions, .notifications:
             break
         case .reminder(let reminder):
             guard
@@ -110,7 +115,7 @@ enum Row: TableCellViewModel {
     
     var editingStyle: UITableViewCell.EditingStyle {
         switch self {
-        case .header, .instructions:
+        case .header, .instructions, .notifications:
             return .none
         case .reminder:
             return .delete
@@ -119,51 +124,10 @@ enum Row: TableCellViewModel {
     
     var commitEditingStyle: CommitEditingStyleClosure? {
         switch self {
-        case .header, .instructions:
+        case .header, .instructions, .notifications:
             return nil
         case .reminder(let reminder):
             return { _ in PersistedReminders.removeReminder(id: reminder.id) }
         }
     }
 }
-
-//private func makeNotificationsView(
-//    enableNotifications: @escaping () -> ())
-//    -> UIView
-//{
-//    let header = UILabel()
-//    header.font = .boldSystemFont(ofSize: 19)
-//    header.numberOfLines = 0
-//    header.text = "Get started"
-//    
-//    let notificationsLabel = UILabel()
-//    notificationsLabel.font = .systemFont(ofSize: 17)
-//    notificationsLabel.numberOfLines = 0
-//    notificationsLabel.text = "Allow the app to sound an alarm when one of your timers finishes:"
-//    
-//    let notificationsButton = RoundedRectButton()
-//    notificationsButton.titleLabel?.font = .boldSystemFont(ofSize: 19)
-//    notificationsButton.setTitle(
-//        "Allow Notifications",
-//        for: .normal)
-//    
-//    let stackView = UIStackView(
-//        arrangedSubviews: [
-//            header,
-//            notificationsLabel,
-//            notificationsButton,
-//        ])
-//    stackView.axis = .vertical
-//    stackView.spacing = 14
-//    stackView.setCustomSpacing(20, after: notificationsLabel)
-//    stackView.alignment = .leading
-//    
-//    // Bindings
-//    
-//    notificationsButton.reactive
-//        .controlEvents(.touchUpInside)
-//        .map { _ in }
-//        .observeValues(enableNotifications)
-//    
-//    return stackView
-//}

@@ -18,6 +18,7 @@
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */; };
+		EA6804F722B2AD4F006C02A1 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */; };
 		EA807503228C87E5006B4943 /* ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = EAEC0AB1220390E30056740B /* ring.wav */; };
 		EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */; };
 		EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88EBE421F50F7C00D045C6 /* ViewController.swift */; };
@@ -117,6 +118,7 @@
 		EA58059A228B268D00B51567 /* TimelordIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntents.entitlements; sourceTree = "<group>"; };
 		EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntentsUI.entitlements; sourceTree = "<group>"; };
 		EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsCell.swift; sourceTree = "<group>"; };
+		EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		EA88EBDF21F50F7C00D045C6 /* Timelord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timelord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA88EBE421F50F7C00D045C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				EA88EBE221F50F7C00D045C6 /* AppDelegate.swift */,
 				EA2096C522B27D370045A25A /* HeaderCell.swift */,
 				EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */,
+				EA6804F622B2AD4F006C02A1 /* NotificationsCell.swift */,
 				EAEC0AAF220385630056740B /* RoundedRectButton.swift */,
 				EAEC0AA9220376F00056740B /* UIApplicationExtensions.swift */,
 				EA88EBE421F50F7C00D045C6 /* ViewController.swift */,
@@ -570,6 +573,7 @@
 				EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */,
 				EAEC0AB0220385630056740B /* RoundedRectButton.swift in Sources */,
 				EA88EBE521F50F7C00D045C6 /* ViewController.swift in Sources */,
+				EA6804F722B2AD4F006C02A1 /* NotificationsCell.swift in Sources */,
 				EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */,
 				EA88EBE321F50F7C00D045C6 /* AppDelegate.swift in Sources */,
 			);
