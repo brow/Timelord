@@ -2,30 +2,33 @@ import ReactiveSwift
 import UserNotifications
 
 public struct PersistedReminders {
-    public static func add<S: Sequence>(reminders: S) where S.Element == Reminder {
-        persistedReminders.value.formUnion(reminders)
+    public static func add<S: Sequence>(
+        reminders: S)
+        where S.Element == Reminder
+    {
+        persistedReminders.set(
+            persistedReminders.value.value.union(reminders))
     }
     
     public static func removeReminder(id: UUID) {
-        persistedReminders.modify { persistedReminders in
-            persistedReminders = persistedReminders.filter { $0.id != id }
-        }
+        persistedReminders.set(
+            persistedReminders.value.value.filter { $0.id != id })
     }
     
     public static var sortedReminders: Property<[Reminder]> {
-        return persistedReminders
+        return persistedReminders.value
             .skipRepeats()
             .map { $0.sorted { $0.date < $1.date } }
     }
 }
 
-private let persistedReminders: MutableProperty<Set<Reminder>> = {
-    let reminders = MutableProperty<Set<Reminder>>(
+private let persistedReminders: PersistedValue<Set<Reminder>> = {
+    let reminders = PersistedValue<Set<Reminder>>(
         userDefaults: sharedDefaults,
         key: "Reminders",
         defaultValue: [])
     
-    reminders
+    reminders.value
         .producer
         .skipRepeats()
         .startWithValues { reminders in

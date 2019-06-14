@@ -14,7 +14,7 @@
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2096C522B27D370045A25A /* HeaderCell.swift */; };
 		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
-		EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */; };
+		EA4F288D21FA598C0009BCEB /* PersistedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* PersistedValue.swift */; };
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA4F289121FA5E760009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
 		EA6804F522B2AB31006C02A1 /* InstructionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */; };
@@ -115,7 +115,7 @@
 		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutablePropertyPersistence.swift; sourceTree = "<group>"; };
+		EA4F288C21FA598C0009BCEB /* PersistedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedValue.swift; sourceTree = "<group>"; };
 		EA58059A228B268D00B51567 /* TimelordIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntents.entitlements; sourceTree = "<group>"; };
 		EA58059B228B269F00B51567 /* TimelordIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimelordIntentsUI.entitlements; sourceTree = "<group>"; };
 		EA6804F422B2AB31006C02A1 /* InstructionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsCell.swift; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 				EAEC0AAD220381150056740B /* Colors.swift */,
 				EAD663B521FCF6A600130E3E /* FormatTimeRemaining.swift */,
 				EAFEAA3021F699D800B487FC /* IntentsExtensions.swift */,
-				EA4F288C21FA598C0009BCEB /* MutablePropertyPersistence.swift */,
 				EAE4F7A0222F111500D6FBD7 /* PersistedReminders.swift */,
+				EA4F288C21FA598C0009BCEB /* PersistedValue.swift */,
 				EAD5B37121F65EA200C1F107 /* Reminder.swift */,
 				EAD5B36F21F65E4A00C1F107 /* ReminderCell.swift */,
 			);
@@ -590,7 +590,7 @@
 				EAFEAA2D21F697E100B487FC /* Reminder.swift in Sources */,
 				EAB04C3722B0191100143536 /* ReminderCell.swift in Sources */,
 				EAEC0AAE220381150056740B /* Colors.swift in Sources */,
-				EA4F288D21FA598C0009BCEB /* MutablePropertyPersistence.swift in Sources */,
+				EA4F288D21FA598C0009BCEB /* PersistedValue.swift in Sources */,
 				EAE4F7A1222F111500D6FBD7 /* PersistedReminders.swift in Sources */,
 				EAFEAA3121F699D800B487FC /* IntentsExtensions.swift in Sources */,
 				EAB04C3822B0198000143536 /* FormatTimeRemaining.swift in Sources */,
