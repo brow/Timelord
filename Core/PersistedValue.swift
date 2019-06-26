@@ -11,7 +11,7 @@ struct PersistedValue<Value: Codable>  {
     {
         let decode = { try? decoder.decode(Value.self, from: $0) }
         
-        holder = MutableProperty(
+        let holder = MutableProperty(
             userDefaults
                 .data(forKey: key)
                 .flatMap(decode)
@@ -23,6 +23,7 @@ struct PersistedValue<Value: Codable>  {
         // other processes.
         userDefaults.reactive
             .producer(forKeyPath: key)
+            .take(during: lifetime)
             .startWithValues { [holder] data in
                 if let data = data as? Data, let value = decode(data) {
                     holder.value = value
@@ -38,7 +39,7 @@ struct PersistedValue<Value: Codable>  {
     
     // MARK: private
     
-    private let holder: MutableProperty<Value>
+    private let (lifetime, token) = Lifetime.make()
 }
 
 private let (encoder, decoder) = (JSONEncoder(), JSONDecoder())
