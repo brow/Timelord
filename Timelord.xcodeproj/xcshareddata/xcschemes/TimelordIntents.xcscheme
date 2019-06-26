@@ -68,7 +68,7 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      intentQueryString = "In Timelord remind me in 7 hours to open wine"
+      intentQueryString = "Using Timelord remind me in 1 minute to open mail"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
@@ -103,7 +103,7 @@
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
-      intentQueryString = "In Timelord remind me in 7 hours to open wine"
+      intentQueryString = "Using Timelord remind me in 1 minute to open mail"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"

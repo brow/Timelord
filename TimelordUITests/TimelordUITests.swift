@@ -8,7 +8,7 @@ class TimelordUITests: XCTestCase {
     func testExample() {
         let siri = XCUIDevice.shared.siriService
         siri.activate(
-            voiceRecognitionText: "In Timelord remind me in 30 minutes to take yams out")
+            voiceRecognitionText: "Using Timelord remind me in 30 minutes to take yams out")
         wait(seconds: 3)
         siri.activate(
             voiceRecognitionText: "Show my Timelord reminders")

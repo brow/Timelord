@@ -42,7 +42,7 @@ final class InstructionsCell: UITableViewCell {
         
         let stackView = UIStackView(arrangedSubviews: [
             header,
-            suggestion("In Timelord remind me in 20 minutes to take yams out"),
+            suggestion("Using Timelord remind me in 20 minutes to take yams out"),
             suggestion("Show Timelord reminders"),
             ])
         stackView.axis = .vertical
