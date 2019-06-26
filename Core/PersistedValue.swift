@@ -1,0 +1,45 @@
+import ReactiveSwift
+
+struct PersistedValue<Value: Codable>  {
+    let value: Property<Value>
+    let set: (Value) -> ()
+    
+    init(
+        userDefaults: UserDefaults,
+        key: String,
+        defaultValue: Value)
+    {
+        let decode = { try? decoder.decode(Value.self, from: $0) }
+        
+        let holder = MutableProperty(
+            userDefaults
+                .data(forKey: key)
+                .flatMap(decode)
+                ?? defaultValue)
+        value = Property(holder)
+        
+        // In UserDefaults, KVO is the only documented way I've found to be
+        // notified of changes to the defaults that includes changes from
+        // other processes.
+        userDefaults.reactive
+            .producer(forKeyPath: key)
+            .take(during: lifetime)
+            .startWithValues { [holder] data in
+                if let data = data as? Data, let value = decode(data) {
+                    holder.value = value
+                }
+            }
+        
+        set = { value in
+            if let data = try? encoder.encode(value) {
+                userDefaults.set(data, forKey: key)
+            }
+        }
+    }
+    
+    // MARK: private
+    
+    private let (lifetime, token) = Lifetime.make()
+}
+
+private let (encoder, decoder) = (JSONEncoder(), JSONDecoder())
