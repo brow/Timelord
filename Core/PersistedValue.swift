@@ -18,6 +18,9 @@ struct PersistedValue<Value: Codable>  {
                 ?? defaultValue)
         value = Property(holder)
         
+        // In UserDefaults, KVO is the only documented way I've found to be
+        // notified of changes to the defaults that includes changes from
+        // other processes.
         userDefaults.reactive
             .producer(forKeyPath: key)
             .startWithValues { [holder] data in
