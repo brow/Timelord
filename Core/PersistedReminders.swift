@@ -32,8 +32,7 @@ private let persistedReminders: PersistedValue<Set<Reminder>> = {
         .producer
         .skipRepeats()
         .startWithValues { reminders in
-            userNotificationCenter.removeAllPendingNotificationRequests()
-            
+            // Add/update notifications for reminders
             let calendar = Calendar.current
             for reminder in reminders {
                 // If we use `Calendar.dateComponents(in:from:)` instead of
@@ -65,6 +64,15 @@ private let persistedReminders: PersistedValue<Set<Reminder>> = {
                         trigger: UNCalendarNotificationTrigger(
                             dateMatching: dateComponents,
                             repeats: false)))
+            }
+            
+            // Remove notifications for no-longer-existing reminders
+            let reminderIDs = Set(reminders.map { $0.id.uuidString })
+            userNotificationCenter.getPendingNotificationRequests { requests in
+                userNotificationCenter.removePendingNotificationRequests(
+                    withIdentifiers: requests
+                        .map { $0.identifier }
+                        .filter { !reminderIDs.contains($0) })
             }
         }
     
