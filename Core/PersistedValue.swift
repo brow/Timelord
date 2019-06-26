@@ -30,10 +30,9 @@ struct PersistedValue<Value: Codable>  {
             }
         
         set = { value in
-            guard
-                let data = try? encoder.encode(value)
-                else { return }
-            userDefaults.set(data, forKey: key)
+            if let data = try? encoder.encode(value) {
+                userDefaults.set(data, forKey: key)
+            }
         }
     }
     
