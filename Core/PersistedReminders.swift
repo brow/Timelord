@@ -53,7 +53,7 @@ private let persistedReminders: PersistedValue<Set<Reminder>> = {
                     from: reminder.date)
                 userNotificationCenter.add(
                     UNNotificationRequest(
-                        identifier: UUID().uuidString,
+                        identifier: reminder.id.uuidString,
                         content: { () -> UNNotificationContent in
                             let content = UNMutableNotificationContent()
                             content.title = reminder.name
