@@ -9,7 +9,7 @@
 			<string>INAddTasksIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>In Timelord remind me in 15 minutes to take yams out</string>
+				<string>Remind me in 15 minutes to take yams out</string>
 			</array>
 		</dict>
 		<dict>
@@ -17,8 +17,7 @@
 			<string>INSearchForNotebookItemsIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>In Timelord show reminders</string>
-				<string>Show Timelord reminders</string>
+				<string>Show reminders</string>
 			</array>
 		</dict>
 	</array>
