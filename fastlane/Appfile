@@ -1,6 +1,6 @@
-app_identifier("com.tombrow.timelord2")
-apple_id("tom@tombrow.com")
-itc_team_name("Tom Brow")
+app_identifier "com.tombrow.timelord2"
+itc_team_name "Tom Brow"
+apple_id "tom@tombrow.com"
 
 
 # For more information about the Appfile, see:
