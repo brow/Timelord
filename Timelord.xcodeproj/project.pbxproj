@@ -13,6 +13,7 @@
 		EA0EE34021F518CE0030A35C /* TimelordIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE33321F518CE0030A35C /* TimelordIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA0EE34321F518CE0030A35C /* TimelordIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA0EE32A21F518CE0030A35C /* TimelordIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA2096C622B27D370045A25A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2096C522B27D370045A25A /* HeaderCell.swift */; };
+		EA41AE6722C4456D00CBE824 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA41AE6522C4456D00CBE824 /* AppIntentVocabulary.plist */; };
 		EA4F288521FA39750009BCEB /* TimelordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288421FA39750009BCEB /* TimelordUITests.swift */; };
 		EA4F288D21FA598C0009BCEB /* PersistedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F288C21FA598C0009BCEB /* PersistedValue.swift */; };
 		EA4F288E21FA5A1F0009BCEB /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD5B36A21F6526700C1F107 /* ReactiveSwift.framework */; };
@@ -112,6 +113,7 @@
 		EA0EE33821F518CE0030A35C /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		EA0EE33D21F518CE0030A35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2096C522B27D370045A25A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		EA41AE6622C4456D00CBE824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Timelord/Base.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		EA4F288221FA39750009BCEB /* TimelordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4F288421FA39750009BCEB /* TimelordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelordUITests.swift; sourceTree = "<group>"; };
 		EA4F288621FA39750009BCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		EA88EBD621F50F7C00D045C6 = {
 			isa = PBXGroup;
 			children = (
+				EA41AE6522C4456D00CBE824 /* AppIntentVocabulary.plist */,
 				EA88EBE121F50F7C00D045C6 /* Timelord */,
 				EA0EE32B21F518CE0030A35C /* TimelordIntents */,
 				EA0EE33721F518CE0030A35C /* TimelordIntentsUI */,
@@ -502,6 +505,7 @@
 			files = (
 				EA807503228C87E5006B4943 /* ring.wav in Resources */,
 				EA88EBED21F50F7D00D045C6 /* LaunchScreen.storyboard in Resources */,
+				EA41AE6722C4456D00CBE824 /* AppIntentVocabulary.plist in Resources */,
 				EA88EBEA21F50F7D00D045C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +627,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EA41AE6522C4456D00CBE824 /* AppIntentVocabulary.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA41AE6622C4456D00CBE824 /* Base */,
+			);
+			name = AppIntentVocabulary.plist;
+			sourceTree = "<group>";
+		};
 		EA88EBEB21F50F7D00D045C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
