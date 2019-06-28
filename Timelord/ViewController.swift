@@ -14,6 +14,10 @@ final class ViewController: UITableViewController {
         tableView.rowHeight = ReminderCell.height
         tableView.tableFooterView = UIView()
         
+        tableView.layoutMargins.left = horizontalMargin
+        tableView.layoutMargins.right = horizontalMargin
+        tableView.separatorInset.left = horizontalMargin
+        
         let sortedReminders = PersistedReminders.sortedReminders
         
         let hasReminders = sortedReminders
@@ -124,6 +128,9 @@ enum Row: TableCellViewModel {
                 else { return }
             cell.model.value = reminder
         }
+        
+        cell.layoutMargins.left = horizontalMargin
+        cell.layoutMargins.right = horizontalMargin
     }
     
     var editingStyle: UITableViewCell.EditingStyle {
@@ -144,3 +151,17 @@ enum Row: TableCellViewModel {
         }
     }
 }
+
+// In iOS 12, a UITableView changes the `layoutMargin` of a
+// UITableViewCell with height UITableView.automaticDimension _after_
+// calculating the cell's automatic height.
+//
+// So the height of the cell is determined by Auto Layout based on
+// left/right margins of 8 pt, and then those margins are changed to 16
+// or 20 pt. This bug is apparent when you have a multiline `UILabel` or
+// `UITextView` with content such that the slight margin change causes
+// it to wrap to one additional line.
+//
+// To work around this, pre-set the cell's horizontal margins to a
+// hardcoded value.
+private let horizontalMargin: CGFloat = 20
