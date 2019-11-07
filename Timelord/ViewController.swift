@@ -32,11 +32,11 @@ final class ViewController: UITableViewController {
                 var rows = [Row.header(showsSeparator: hasReminders)]
                 rows.append(
                     contentsOf: persistedReminders.map(Row.reminder))
-                rows.append(
-                    notificationsAreEnabled
-                        ? .instructions
-                        : .notifications(
-                            enable: enableNotifications))
+                if !notificationsAreEnabled {
+                    rows.append(.notifications(
+                        enable: enableNotifications))
+                }
+                rows.append(.instructions)
                 return TableViewModel(sectionModels: [
                     TableSectionViewModel(
                         diffingKey: "main",

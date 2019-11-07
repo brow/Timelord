@@ -12,7 +12,7 @@ final class NotificationsCell: UITableViewCell {
         let header = UILabel()
         header.font = .boldSystemFont(ofSize: 19)
         header.numberOfLines = 0
-        header.text = "To get started…"
+        header.text = "First things first"
         
         let notificationsLabel = UILabel()
         notificationsLabel.font = .systemFont(ofSize: 17)
